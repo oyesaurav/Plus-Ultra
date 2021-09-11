@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "../../components/navbar";
 import Notice from "../../components/noticeTemp";
+import TimeTable from "../../components/table";
 import "../../Css/styles.css"
 
 class Home extends React.Component 
@@ -15,6 +16,9 @@ class Home extends React.Component
                    <Notice />
                    <Notice />
                </div>
+               
+               <br />
+               <TimeTable />
            </div>
        )
    }
