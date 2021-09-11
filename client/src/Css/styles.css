@@ -41,6 +41,20 @@
   }
 }
 
+table, th, td {
+  border: 1px solid black;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+th {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 2vw;
+}
+
 .blog-card {
   display: -webkit-box;
   display: -ms-flexbox;

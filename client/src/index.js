@@ -1,11 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import './index.css';
+
+import Home from "./Pages/home/home"
+import Timetable from "./components/table"
 
 
 ReactDOM.render(
-  <App />,
+  <BrowserRouter>
+  <Switch>
+    <Route exact path="/" component={Home} />
+    <Route path="*">
+      <h2>Error page</h2>
+    </Route>
+  </Switch>
+  <Route path="/Timetable" component={Timetable} />
+</BrowserRouter>,
   document.getElementById('root')
 );
 

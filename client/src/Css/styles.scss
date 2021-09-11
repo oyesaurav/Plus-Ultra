@@ -37,6 +37,17 @@ $shadow: rgba(0, 0, 0, 0.2);
   }
 
 
+  table, th, td {
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
+  th {
+    height: fit-content;
+    padding: 2vw;
+  }
+
 
 
 //==================notice temp =================
