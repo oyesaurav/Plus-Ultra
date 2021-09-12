@@ -1,0 +1,109 @@
+@import './variables';
+
+.container-home {
+    background-color: $white;
+    // padding: 0 30px;
+    width: 100%;
+
+    // NAVBAR-CONTAINER
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 30px;
+
+        h2 {
+            button {
+                visibility: hidden;
+            }
+        }
+    
+        .nav-list {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+    
+            #nav-links {
+                display: flex;
+                height: fit-content;
+                list-style: none;
+                padding: 0;
+                visibility: visible;
+    
+                li {
+                    height: fit-content;
+                    margin: 0 0 0 10px;
+                    padding: 10px;
+                    transition: all 0.25s ease-in-out;
+    
+                    a {
+                        color: $black;
+                        font-weight: 500;
+                        text-decoration: none;
+                    }
+    
+                    &:hover {
+                        background-color: #F7F6F2;
+                    }
+                }
+            }
+    
+            #signup {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+    
+    // HOMEPAGE
+    .homeBg {
+        background-image: url("../images/homeBg3.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        // border-bottom: 10px solid red;
+        height: 425px;
+        width: 100%;
+    }
+
+    hr {
+        border-top: 15px solid #8236CB;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .container-home {
+        width: 100%;
+
+        .navbar {
+            flex-direction: column;
+
+            h2 {
+                button {
+                    // margin-top: 5px;
+                    height: max-content;
+                    float: right;
+                    visibility: visible;
+                }
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                transition: all 0.1s ease-in-out;
+
+                #nav-links {
+                    flex-direction: column;
+                    margin: 0 0 20px 0;
+                    text-align: center;
+                    width: 100%;
+                    visibility: hidden;
+
+                    li {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
