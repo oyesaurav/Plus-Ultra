@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom"
 import './index.css';
 
 import Home from "./components/homepage/home"
+import Students from "./components/students/Studentpage"
 
 
 ReactDOM.render(
@@ -11,6 +12,7 @@ ReactDOM.render(
   <Switch>
     <Route path="/home" component={Home} />
     <Route exact path="/" component={Home} />
+    <Route exact path="/students" component={Students} />
     <Route>
       <h2>Error page</h2>
     </Route>
