@@ -212,7 +212,12 @@
   height: 85%;
   position: absolute;
   top: 130px;
+  visibility: hidden;
   width: 90%;
+}
+
+.container-home .container-notice Link {
+  text-decoration: none;
 }
 
 .container-home h1, .container-home p {
@@ -289,6 +294,18 @@
   .container-home .footer span #footer-mid {
     border: none;
   }
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+
+th {
+  padding: 2vw;
+}
+
+table {
+  margin: 5vh;
 }
 
 body {
