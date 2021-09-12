@@ -24,7 +24,10 @@ export default function Nav() {
     return (
         <div className="navbar">
 
-            <h2 id="logo">Name <button onClick={toggleLinks}>M</button></h2> 
+            <h2 id="logo">Name <button onClick={toggleLinks}>
+              {/* { showLinks ? <img src="../../public/images/menu.png" alt="" /> : <img src="../../public/images/close.png" alt="" />} */}
+              =
+              </button></h2> 
 
             <div className="nav-list" ref={linksContainerRef}>
                 <ul id="nav-links" ref={linksRef}>

@@ -17,12 +17,14 @@
             padding: 10px 0;
             transition: all 0.25s ease-in-out;
             width: 175px;
+            text-decoration: none;
 
             &:hover {
                 background: #8236CB;
                 color: $white;
                 cursor: pointer;
             }
+
         }
     }
     

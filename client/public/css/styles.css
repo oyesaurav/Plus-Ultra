@@ -114,6 +114,7 @@
     transition: all 0.1s ease-in-out;
   }
   .container-home .navbar .nav-list #nav-links {
+    height: auto;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -146,6 +147,7 @@
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
   width: 175px;
+  text-decoration: none;
 }
 
 .container-home .buttons button:hover {
