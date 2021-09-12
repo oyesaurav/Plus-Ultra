@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import './variables';
+@import './header';
+@import './home';
+
+body {
+  background-color: #F3F1F5;
+  height: fit-content;
+  padding: 0 30px;
+  // width: 100%;
+}
+
+@media screen and (max-width: 376px) {
+  body {
+    padding: 0;
+  }
+}
