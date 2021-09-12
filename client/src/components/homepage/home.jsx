@@ -1,9 +1,9 @@
 import React from "react";
 import Footer from "../Footer";
-import Nav from "./Navbar";
+import Nav from "./navbar";
 import Notice from "./Notice";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-import Table from "./Table";
+import Table from "./table";
 
 export default function Home() {
 
