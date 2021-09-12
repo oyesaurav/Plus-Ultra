@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 // import "../../css/styles.css"
 
 export default function Notice() {
-  const [showNotice, setShow] = useState(false)
-  const noticeRef = useRef(null)
-  const timeTableRef = useRef(null)
+  const [showNotice, setShow] = useState(true)
+  const noticeRef = useRef('')
+  const timeTableRef = useRef('')
 
   function toggle() {
     setShow(!showNotice)
@@ -24,10 +25,6 @@ export default function Notice() {
     <div id="container-notice">
 
 
-    <p className="buttons">
-      <button id="notice-button" onClick={toggle}>NOTICE</button>
-      <button id="time-table-button" onClick={toggle}>TIME-TABLE</button>
-    </p>
 
     <h1>Notice Board</h1>
     <div className="notice-div">

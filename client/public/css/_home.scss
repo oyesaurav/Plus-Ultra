@@ -65,8 +65,12 @@
             height: 85%;
             position: absolute;
             top: 130px;
-            // visibility: hidden;
+            visibility: hidden;
             width: 90%;
+        }
+
+        Link {
+            text-decoration: none;
         }
     }
 

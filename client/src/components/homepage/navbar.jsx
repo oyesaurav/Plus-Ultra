@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 // import "../../css/styles.css"
 
 export default function Nav() {
@@ -28,7 +29,9 @@ export default function Nav() {
             <div className="nav-list" ref={linksContainerRef}>
                 <ul id="nav-links" ref={linksRef}>
                     {/* eslint-disable-next-line */}
-                    <li><a href="#">Home</a></li>
+                    <li>
+                      <Link to="/">Home</Link>
+                      </li>
                     {/* eslint-disable-next-line */}
                     <li><a href="#">About Us</a></li>
                     {/* eslint-disable-next-line */}
