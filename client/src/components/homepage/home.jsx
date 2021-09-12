@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "../Footer";
-import Nav from "./navbar";
+import Nav from "./Navbar";
 import Notice from "./Notice";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Table from "./Table";
