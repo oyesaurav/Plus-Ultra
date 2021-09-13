@@ -1,23 +1,12 @@
 import React from 'react';
-import Home from './components/homepage/Home';
-import "../public/css/styles.css"
-
-// class App extends React.Component {
-
-//     render() {
-//         return (
-//             <div>
-//                 <Home />
-//             </div>
-//         )
-//     }
-    
-// }
+// import Home from './components/homepage/Home';
+import Nav from './components/homepage/navbar';
+// import "../public/css/styles.css"
 
 export default function App() {
     return (
-        <div>
-            <Home />
+        <div className="container-home">
+            <Nav />
         </div>
     )
 }

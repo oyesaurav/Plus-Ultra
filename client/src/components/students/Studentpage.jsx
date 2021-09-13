@@ -1,36 +1,44 @@
 import React from "react";
-
-import StudentDetails from "./studentsData";
+import array from "./studentsData";
 import Students from "./Students";
-
-import Nav from "../homepage/navbar";
+// import Nav from "../homepage/navbar";
 import Footer from "../Footer";
 
 function StudentPage() {
-    const data = StudentDetails.map(student => {
-    return (
-        <Students 
-          key={student.id} 
-          id={student.id}
-          Name={student.Name}
-          Branch={student.Branch}
-          DOB={student.DOB}
-          Email={student.Email}
-          Interest={student.Interest}
-        />
-    )
-})
+
+    const data = array.map(student => {
+        return (
+            <Students 
+            key={student.id} 
+            Id={student.id}
+            Avatar={student.avatar}
+            Cover={student.cover}
+            Name={student.name}
+            Branch={student.branch}
+            DOB={student.DOB}
+            About={student.about}
+            Education={student.education}
+            Skills={student.skills}
+            Interests={student.interests}
+            />
+        )
+    })
     
     return (
         
-        <div>
-            <div className="container-home">
-              <Nav />
-          
+        <div className="container-home">
+            {/* <Nav /> */}
+            <div id="search-bar">
+                <input type="text" />
+                <button><i className="fas fa-search"></i></button>
+            </div>
+            <div className="container-students">
+
               {data} 
 
-              <Footer/> 
-            </div>          
+            </div>
+
+            <Footer/>
         </div>
     )
 }
