@@ -11,7 +11,9 @@ export default function Home() {
     return (
         <BrowserRouter>
         <div className="container-home">
+
             {/* <Nav /> */}
+
             <div className="homeBg"></div>
             <hr />
             <h1>WELCOME</h1>

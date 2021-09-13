@@ -1,7 +1,6 @@
 import React from "react";
 import array from "./studentsData";
 import Students from "./Students";
-// import Nav from "../homepage/navbar";
 import Footer from "../Footer";
 
 function StudentPage() {
