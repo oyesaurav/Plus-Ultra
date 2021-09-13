@@ -1,17 +1,7 @@
 import React from 'react';
+// import Home from './components/homepage/Home';
 import Nav from './components/homepage/navbar';
-
-// class App extends React.Component {
-
-//     render() {
-//         return (
-//             <div>
-//                 <Home />
-//             </div>
-//         )
-//     }
-    
-// }
+import Nav from './components/homepage/navbar';
 
 export default function App() {
     return (

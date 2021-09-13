@@ -1,0 +1,114 @@
+@import './variables';
+
+.container-home {
+    #search-bar {
+        align-items: center;
+        display: flex;
+        margin: auto;
+        width: fit-content;
+
+        input {
+            background-color: #f3e8fa;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1.25rem;
+            height: 35px;
+            outline: none;
+            padding: 0 15px;
+            width: 250px;
+        }
+
+        button {
+            background: none;
+            border: 1px solid #8236CB;
+            border-radius: 0 50px 50px 0;
+            height: 35px;
+            transition: all 0.25s ease-in-out;
+            width: 40px;
+
+            &:hover {
+                background: #8236CB;
+                color: $white;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .container-students {
+        column-gap: 25px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        margin: 25px auto;
+        row-gap: 25px;
+        width: fit-content;
+
+        #student-card {
+            // background: url("../images/avatars/cover1.jpg");
+            // background-size: cover;
+            background-color: #F3F1F5;
+            padding: 20px;
+            text-align: center;
+            width: fit-content;
+
+            img {
+                height: auto;
+                width: 150px;
+            }
+
+            h3 {
+                margin: 10px 0 0 0;
+                transition: all 0.25s ease-in-out;
+
+                &:hover {
+                    color: #8236CB;
+                    cursor: pointer;
+                }
+            }
+
+            p {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .container-home {
+        .container-students {
+            column-gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto;
+            row-gap: 25px;
+
+            #student-card {
+                padding: 5px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 377px) and (max-width: 900px) {
+    .container-home {
+        .container-students {
+            column-gap: 25px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            row-gap: 25px;
+        }
+    }
+    
+}
+
+@media screen and (min-width: 900px) and (max-width: 1120px) {
+    .container-home {
+        .container-students {
+            column-gap: 25px;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
+            row-gap: 25px;
+        }
+    }
+    
+}
