@@ -1,6 +1,5 @@
 import React from "react";
 import Footer from "../Footer";
-import Nav from "./navbar";
 import Notice from "./Notice";
 import { BrowserRouter, Route, Switch, Link, } from "react-router-dom";
 import Table from "./table";
@@ -11,7 +10,7 @@ export default function Home() {
     return (
         <BrowserRouter>
         <div className="container-home">
-            <Nav />
+
             <div className="homeBg"></div>
             <hr />
             <h1>WELCOME</h1>

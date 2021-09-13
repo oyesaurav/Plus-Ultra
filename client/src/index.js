@@ -5,10 +5,12 @@ import './index.css';
 
 import Home from "./components/homepage/home"
 import Students from "./components/students/Studentpage"
+import App from './app';
 
 
 ReactDOM.render(
   <BrowserRouter>
+  <App />
   <Switch>
     <Route path="/home" component={Home} />
     <Route exact path="/" component={Home} />

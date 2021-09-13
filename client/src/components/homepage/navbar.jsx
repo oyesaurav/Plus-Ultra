@@ -24,7 +24,7 @@ export default function Nav() {
     return (
         <div className="navbar">
 
-            <h2 id="logo">Name <button onClick={toggleLinks}>
+            <h2 id="logo">Plus Ultra <button onClick={toggleLinks}>
               {/* { showLinks ? <img src="../../public/images/menu.png" alt="" /> : <img src="../../public/images/close.png" alt="" />} */}
               =
               </button></h2> 
