@@ -1,6 +1,5 @@
 import React from 'react';
-import Home from './components/homepage/Home';
-import "../public/css/styles.css"
+import Nav from './components/homepage/navbar';
 
 // class App extends React.Component {
 
@@ -16,8 +15,8 @@ import "../public/css/styles.css"
 
 export default function App() {
     return (
-        <div>
-            <Home />
+        <div className="container-home">
+            <Nav />
         </div>
     )
 }

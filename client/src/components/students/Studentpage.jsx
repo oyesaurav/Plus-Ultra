@@ -2,8 +2,6 @@ import React from "react";
 
 import StudentDetails from "./studentsData";
 import Students from "./Students";
-
-import Nav from "../homepage/navbar";
 import Footer from "../Footer";
 
 function StudentPage() {
@@ -25,7 +23,6 @@ function StudentPage() {
         
         <div>
             <div className="container-home">
-              <Nav />
           
               {data} 
 
