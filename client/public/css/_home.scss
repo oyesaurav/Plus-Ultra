@@ -104,6 +104,20 @@
 
 @media screen and (max-width: 376px) {
     .container-home {
+        h1, p {
+            text-align: center;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+
+            button {
+                width: 150px;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
         .container-notice {
             text-align: center;
             width: 95%;

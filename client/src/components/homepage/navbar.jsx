@@ -12,6 +12,7 @@ export default function Nav() {
     useEffect(() => {
       const linksHeight = linksRef.current.getBoundingClientRect().height;
       const linksWidth = linksRef.current.getBoundingClientRect().width;
+
       if (showLinks && linksWidth < 375) {
         linksRef.current.style.visibility = `visible`
         linksContainerRef.current.style.height = `${linksHeight}px`;
@@ -24,9 +25,8 @@ export default function Nav() {
     return (
         <div className="navbar">
 
-            <h2 id="logo">Plus Ultra <button onClick={toggleLinks}>
-              {/* { showLinks ? <img src="../../public/images/menu.png" alt="" /> : <img src="../../public/images/close.png" alt="" />} */}
-              =
+            <h2 id="logo">Name <button onClick={toggleLinks}>
+              {!showLinks ? <i className="fas fa-bars"></i> : <i className="fas fa-times"></i>}
               </button></h2> 
 
             <div className="nav-list" ref={linksContainerRef}>
@@ -44,9 +44,7 @@ export default function Nav() {
                       <Link to="students">Students</Link>
                     </li>
                     {/* eslint-disable-next-line */}
-                    <li><a href="#">Login</a></li>
-                    {/* eslint-disable-next-line */}
-                    <li><a href="#">Sign Up</a></li>
+                    <li style={{fontSize: "2rem", padding: "0 10px", margin:"0"}}><a href="#"><i className="fas fa-user-circle"></i></a></li>
                 </ul>
                 {/* <div id="signup">Sign Up</div> */}
             </div>

@@ -1,70 +1,125 @@
 
-const StudentDetails = [
+const array = [
     {
         id: "B120001",
-        Name: "Abhishek Kumar",
+        avatar: "man1",
+        cover: "cover1.jpg",
+        name: "Student 1",
         DOB : "x / x / x",
-        Branch:"CSE",
-        Interest: "something",
-        Email: "B120001@iiit-bh.ac.in"
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Javascrit", "WebDev"],
+        interests: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
         id: "B120002",
-        Name: "Adarsh Barik",
+        avatar: "man2",
+        cover: "cover2.jpg",
+        name: "Student 2",
         DOB : "x / x / x",
-        Branch: "CSE",
-        Interest: "something",
-        Email: "B120002@iiit-bh.ac.in"
+        branch: "CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Python", "AI/ML"],
+        interests: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
         id: "B120003",
-        Name: "Aditi Rout",
+        avatar: "woman1",
+        cover: "cover3.jpg",
+        name: "Student 3",
         DOB : "x / x / x",
-        Branch: "CSE",
-        Interest: "something",
-        Email: "B120003@iiit-bh.ac.in"
+        branch: "CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Kotlin", "Andriod dev"],
+        interests: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
         id: "B120004",
-        Name: "Amisha",
+        avatar: "man3",
+        cover: "cover2.jpg",
+        name: "Student 4",
         DOB : "x / x / x",
-        Branch: "CSE",
-        Interest: "something",
-        Email: "B120004@iiit-bh.ac.in"
+        branch: "CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Java", "Competitive Programming"],
+        interests: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
         id: "B120005",
-        Name: "Abhishek Kumar",
+        avatar: "woman2",
+        cover: "cover1.jpg",
+        name: "Student 5",
         DOB : "x / x / x",
-        Branch: "CSE",
-        Interest: "something",
-        Email: "B120001@iiit-bh.ac.in"
+        branch: "CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Javascrit", "WebDev"],
+        interests: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
         id: "B120006",
-        Name: "Abhishek Kumar",
+        avatar: "woman3",
+        cover: "cover3.jpg",
+        name: "Student 6",
         DOB : "x / x / x",
-        Branch:"CSE",
-        Interest: "something",
-        Email: "B120001@iiit-bh.ac.in"
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Kotlin", "Andriod dev"],
+        interests: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
         id: "B120007",
-        Name: "Abhishek Kumar",
+        avatar: "man4",
+        cover: "cover3.jpg",
+        name: "Student 7",
         DOB : "x / x / x",
-        Branch:"CSE",
-        Interest: "something",
-        Email: "B120001@iiit-bh.ac.in"
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Java", "Competitive Programming"],
+        interests: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
         id: "B120008",
-        Name: "Abhishek Kumar",
+        avatar: "woman4",
+        cover: "cover2.jpg",
+        name: "Student 8",
         DOB : "x / x / x",
-        Branch:"CSE",
-        Interest: "something",
-        Email: "B120001@iiit-bh.ac.in"
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Javascrit", "WebDev"],
+        interests: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    },
+    {
+        id: "B120009",
+        avatar: "woman5",
+        cover: "cover1.jpg",
+        name: "Student 9",
+        DOB : "x / x / x",
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Python", "AI/ML"],
+        interests: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    },
+    {
+        id: "B120010",
+        avatar: "man5",
+        cover: "cover3.jpg",
+        name: "Student 10",
+        DOB : "x / x / x",
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Java", "Competitive Programming"],
+        interests: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     }
-
 ]
 
-export default StudentDetails
+export default array
