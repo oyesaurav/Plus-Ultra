@@ -33,14 +33,16 @@ export default function Nav() {
                 <ul id="nav-links" ref={linksRef}>
                     {/* eslint-disable-next-line */}
                     <li>
-                      <Link to="/">Home</Link>
-                      </li>
+                      <Link to="">Home</Link>
+                    </li>
                     {/* eslint-disable-next-line */}
                     <li><a href="#">About Us</a></li>
                     {/* eslint-disable-next-line */}
                     <li><a href="#">Contacts</a></li>
                     {/* eslint-disable-next-line */}
-                    <li><a href="#">Students</a></li>
+                    <li>
+                      <Link to="students">Students</Link>
+                    </li>
                     {/* eslint-disable-next-line */}
                     <li><a href="#">Login</a></li>
                     {/* eslint-disable-next-line */}
