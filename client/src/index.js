@@ -6,6 +6,8 @@ import './index.css';
 import Home from "./components/homepage/home"
 import Students from "./components/students/Studentpage"
 import App from './app';
+import LoginPage from './components/authpage/LoginPage';
+import SignupPage from './components/authpage/SignupPage';
 
 
 ReactDOM.render(
@@ -14,7 +16,9 @@ ReactDOM.render(
   <Switch>
     <Route path="/home" component={Home} />
     <Route exact path="/" component={Home} />
-    <Route exact path="/students" component={Students} />
+    <Route path="/students" component={Students} />
+    <Route path="/login" component={LoginPage} />
+    <Route path="/signup" component={SignupPage} />
     <Route>
       <h2>Error page</h2>
     </Route>
