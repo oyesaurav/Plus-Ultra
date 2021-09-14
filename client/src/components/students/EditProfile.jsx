@@ -13,28 +13,28 @@ export default function EditProfile() {
                     <input
                     name="Name"
                     type="text"
-                    placeholder="Enter your Name"/>  
+                    placeholder="Enter your name"/>  
                 </span>
                 {/* <br /> */}
                 
-                <span id="edit-branch"><label>Branch:</label><br/>
+                <span id="edit-branch"><label>Email:</label><br/>
                     <input
                     name="branch"
-                    type="text"
-                    placeholder="Enter your branch"/>  
+                    type="email"
+                    placeholder="Enter your email"/>  
                 </span>
               </div>
               
               {/* SECITON-2 */}
               <div className="section-2">
-                <span id="edit-dob"><label>Date of Birth:</label> <br />
+                <span id="edit-dob"><label>Contact:</label> <br />
                     <input
-                    name="DOB"
+                    name="contact"
                     type="text"
-                    placeholder="Enter your dob"/>  
+                    placeholder="Enter your contact"/>  
                 </span>
 
-                <span id="edit-image"><label>Upload your image:</label><input type="file"/></span>
+                <span id="edit-image"><label>Upload your resume:</label><input type="file"/></span>
               </div>
               
               <br/>
@@ -45,15 +45,15 @@ export default function EditProfile() {
               </label>
               <br/>
               
-              <label>Education: <br />
+              <label>Achievements: <br />
                 <textarea
-                 placeholder="Enter about your edu"/>  
+                 placeholder="Add to your achievements"/>  
               </label>
               <br/>
               
               <label>Skills: <br />
                 <textarea
-                 placeholder="Enter your skills"/>  
+                 placeholder="Add to your skills"/>  
               </label>
               <br/>
 

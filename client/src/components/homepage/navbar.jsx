@@ -38,7 +38,7 @@ export default function Nav() {
                     {/* eslint-disable-next-line */}
                     <li><a href="#">About Us</a></li>
                     {/* eslint-disable-next-line */}
-                    <li><a href="#">Contacts</a></li>
+                    <li><a href="#">Contact Us</a></li>
                     {/* eslint-disable-next-line */}
                     <li>
                       <Link to="students">Students</Link>
