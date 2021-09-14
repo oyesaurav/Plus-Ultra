@@ -25,7 +25,7 @@ export default function Nav() {
     return (
         <div className="navbar">
 
-            <h2 id="logo">Name <button onClick={toggleLinks}>
+            <h2 id="logo">Plus Ultra <button onClick={toggleLinks}>
               {!showLinks ? <i className="fas fa-bars"></i> : <i className="fas fa-times"></i>}
               </button></h2> 
 
@@ -44,7 +44,11 @@ export default function Nav() {
                       <Link to="students">Students</Link>
                     </li>
                     {/* eslint-disable-next-line */}
-                    <li style={{fontSize: "2rem", padding: "0 10px", margin:"0"}}><a href="#"><i className="fas fa-user-circle"></i></a></li>
+                    <li style={{fontSize: "2rem", padding: "0 10px", margin:"0"}}>
+                      <Link to="login">
+                      <i className="fas fa-user-circle"></i>
+                      </Link>
+                    </li>
                 </ul>
                 {/* <div id="signup">Sign Up</div> */}
             </div>
