@@ -17,7 +17,8 @@ export default function LoginPage () {
                     {/* eslint-disable-next-line */}
                     <p id="forgot" align="center"><a href="#">Forgot Password?</a></p>
                     <p id="make-account" align="center">
-                    <Link to="signup">Make an account first?</Link>
+                        <Link to="signup">Sign Up</Link><br /><br />
+                        <Link to="editprofile">Edit profile</Link>
                     </p>
                 </div>
                 </form>  
