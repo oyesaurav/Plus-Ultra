@@ -8,6 +8,7 @@ import Students from "./components/students/Studentpage"
 import App from './app';
 import LoginPage from './components/authpage/LoginPage';
 import SignupPage from './components/authpage/SignupPage';
+import EditProfile from './components/students/EditProfile';
 
 
 ReactDOM.render(
@@ -19,6 +20,7 @@ ReactDOM.render(
     <Route path="/students" component={Students} />
     <Route path="/login" component={LoginPage} />
     <Route path="/signup" component={SignupPage} />
+    <Route path="/editprofile" component={EditProfile} />
     <Route>
       <h2>Error page</h2>
     </Route>
