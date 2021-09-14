@@ -57,11 +57,11 @@ export default function EditProfile() {
               </label>
               <br/>
 
-
               <p><button type="submit">Save</button></p>
 
           </form>
           <div className="container-home"><Footer /></div>
         </div>
+
     )
 }
