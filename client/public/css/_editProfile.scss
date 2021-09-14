@@ -1,0 +1,124 @@
+.container-edit-profile {
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 20px 0 0;
+    position: relative;
+
+    p {
+        margin: 0;
+        padding: 10px 0 0;
+        text-align: center;
+        button {
+            background: none;
+            border: 1px solid #8236CB;
+            border-radius: 50px;
+            color: #8236CB;
+            font-size: 1.25rem;
+            height: 45px;
+            margin: auto;
+            transition: all 0.25s ease-in-out;
+            width: 150px;
+    
+            &:hover {
+                background: #8236CB;
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+        }
+    }
+
+    
+
+    form {
+        background-color: #FFFFFF;
+        margin: 52.5px auto;
+        padding: 30px 50px;
+        position: relative;
+        width: fit-content;
+
+        .section-1, .section-2 {
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                width: 50%;
+
+                input {
+                    background-color: #f3e8fa;
+                    border: none;
+                    font-size: 1rem;
+                    height: 30px;
+                    margin: 5px 0 0;
+                    outline: none;
+                    width: 80%;
+                }
+                input[type=file] {
+                    background: none;
+                }
+
+                label {
+                    color: #8236CB;
+                }
+            }
+        }
+        .section-1 {
+            margin: 0 0 20px 0;
+        }
+
+        label {
+            color: #8236CB;
+
+            textarea {
+                width: 90%;
+            }
+        }
+    }
+
+    h1 {
+        color: #8236CB;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .container-edit-profile {
+        height: 100vh;
+        margin: 0 0 50px 0;
+        padding: 0;
+
+        form {
+            margin: auto;
+            position: relative;
+            padding: 50px 30px;
+            width: 80%;
+
+            .section-1, .section-2 {
+                // align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                margin: 0;
+                // text-align: center;
+
+                span {
+                    margin: 0 0 10px 0;
+                    width: 100%;
+    
+                    input {
+                        width: 100%;
+                    }
+    
+                    label {
+                        color: #8236CB;
+                    }
+                }
+            }
+
+            label {
+    
+                textarea {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

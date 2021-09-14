@@ -8,8 +8,7 @@ import Students from "./components/students/Studentpage"
 import App from './app';
 import LoginPage from './components/authpage/LoginPage';
 import SignupPage from './components/authpage/SignupPage';
-import EditProfile from './components/students/EditProfile';
-
+import EditProfile from './components/students/EditProfile'
 
 ReactDOM.render(
   <BrowserRouter>
