@@ -85,7 +85,7 @@ function Students(props) {
                         fontSize: "2.5rem"
                     }}>{props.Name}</h1>
                     <p>{props.Id}</p>
-                    <p>{props.DOB}</p>
+                    <p>{props.Email}<br/>{props.Contact}</p>
                     {/* ABOUT ME */}
                     <span>
                         <h2 style={{margin: "0", fontWeight: "700"}}>About me</h2>
@@ -105,8 +105,8 @@ function Students(props) {
                     </span>
                     {/* INTERESTS */}
                     <span>
-                        <h2 style={{margin: "20px 0 0", fontWeight: "700"}}>Interests</h2>
-                        <p style={{margin: "0", padding: "0 0 20px 0"}}>{props.Interests}</p>
+                        <h2 style={{margin: "20px 0 0", fontWeight: "700"}}>Achievements</h2>
+                        <p style={{margin: "0", padding: "0 0 20px 0"}}>{props.Achievements}</p>
                     </span>
                 </div>
                 

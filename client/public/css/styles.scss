@@ -5,10 +5,11 @@
 @import './table';
 @import './student';
 @import './login';
+@import './editProfile';
 
 body {
   background-color: #F3F1F5;
-  height: fit-content;
+  height: 100vh;
   padding: 0 30px;
   // width: 100%;
 }

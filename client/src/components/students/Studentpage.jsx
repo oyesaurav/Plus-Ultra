@@ -14,11 +14,12 @@ function StudentPage() {
             Cover={student.cover}
             Name={student.name}
             Branch={student.branch}
-            DOB={student.DOB}
+            Email={student.email}
+            Contact={student.contact}
             About={student.about}
             Education={student.education}
             Skills={student.skills}
-            Interests={student.interests}
+            Achievements={student.achievements}
             />
         )
     })
