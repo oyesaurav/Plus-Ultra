@@ -1,0 +1,135 @@
+
+const array = [
+    {
+        id: "B120001",
+        avatar: "man1",
+        cover: "cover1.jpg",
+        name: "Student 1",
+        email : "b120001@iiit-bh.ac.in",
+        contact: "+91 54321 67890",
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Javascrit", "WebDev"],
+        achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    },
+    {
+        id: "B120002",
+        avatar: "man2",
+        cover: "cover2.jpg",
+        name: "Student 2",
+        email : "b120002@iiit-bh.ac.in",
+        contact: "+91 54321 67890",
+        branch: "CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Python", "AI/ML"],
+        achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    },
+    {
+        id: "B120003",
+        avatar: "woman1",
+        cover: "cover3.jpg",
+        name: "Student 3",
+        email : "b120003@iiit-bh.ac.in",
+        contact: "+91 54321 67890",
+        branch: "CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Kotlin", "Andriod dev"],
+        achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    },
+    {
+        id: "B120004",
+        avatar: "man3",
+        cover: "cover2.jpg",
+        name: "Student 4",
+        email : "b120004@iiit-bh.ac.in",
+        contact: "+91 54321 67890",
+        branch: "CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Java", "Competitive Programming"],
+        achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    },
+    {
+        id: "B120005",
+        avatar: "woman2",
+        cover: "cover1.jpg",
+        name: "Student 5",
+        email : "b120005@iiit-bh.ac.in",
+        contact: "+91 54321 67890",
+        branch: "CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Javascrit", "WebDev"],
+        achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    },
+    {
+        id: "B120006",
+        avatar: "woman3",
+        cover: "cover3.jpg",
+        name: "Student 6",
+        email : "b120006@iiit-bh.ac.in",
+        contact: "+91 54321 67890",
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Kotlin", "Andriod dev"],
+        achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    },
+    {
+        id: "B120007",
+        avatar: "man4",
+        cover: "cover3.jpg",
+        name: "Student 7",
+        email : "b120007@iiit-bh.ac.in",
+        contact: "+91 54321 67890",
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Java", "Competitive Programming"],
+        achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    },
+    {
+        id: "B120008",
+        avatar: "woman4",
+        cover: "cover2.jpg",
+        name: "Student 8",
+        email : "b120008@iiit-bh.ac.in",
+        contact: "+91 54321 67890",
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Javascrit", "WebDev"],
+        achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    },
+    {
+        id: "B120009",
+        avatar: "woman5",
+        cover: "cover1.jpg",
+        name: "Student 9",
+        email : "b120009@iiit-bh.ac.in",
+        contact: "+91 54321 67890",
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Python", "AI/ML"],
+        achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    },
+    {
+        id: "B120010",
+        avatar: "man5",
+        cover: "cover3.jpg",
+        name: "Student 10",
+        email : "b120010@iiit-bh.ac.in",
+        contact: "+91 54321 67890",
+        branch:"CSE",
+        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.",
+        education: ["Secondary school"],
+        skills: ["C", "C++", "Java", "Competitive Programming"],
+        achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
+    }
+]
+
+export default array

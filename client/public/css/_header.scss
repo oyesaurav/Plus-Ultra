@@ -1,0 +1,122 @@
+@import './variables';
+
+.container-home {
+    background-color: $white;
+    // padding: 0 30px;
+    width: 100%;
+
+    // NAVBAR-CONTAINER
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 30px;
+
+        h2 {
+            button {
+                visibility: hidden;
+            }
+        }
+    
+        .nav-list {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+    
+            #nav-links {
+                align-items: center;
+                display: flex;
+                height: fit-content;
+                list-style: none;
+                // margin: 0 0 20px 0;
+                padding: 0;
+                visibility: visible;
+                width: fit-content;
+    
+                li {
+                    height: fit-content;
+                    margin: 0 0 0 10px;
+                    padding: 10px;
+                    transition: all 0.25s ease-in-out;
+                    // width: 100%;
+    
+                    a {
+                        color: $black;
+                        font-weight: 500;
+                        text-decoration: none;
+                    }
+    
+                    &:hover {
+                        background-color: #f3e8fa;
+                    }
+                }
+            }
+    
+            #signup {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+    
+    // HOMEPAGE
+    .homeBg {
+        background-image: url("../images/homeBg3.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        // border-bottom: 10px solid red;
+        height: 425px;
+        width: 100%;
+    }
+
+    hr {
+        border-top: 15px solid #8236CB;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .container-home {
+        width: 100%;
+
+        .navbar {
+            flex-direction: column;
+            margin-bottom: 20px;
+
+            h2 {
+                margin-bottom: 0;
+                button {
+                    background: none;
+                    border: none;
+                    // margin-top: 5px;
+                    float: right;
+                    font-size: 1.5rem;
+                    height: 33px;
+                    visibility: visible;
+                    width: 33px;
+                }
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                transition: all 0.1s ease-in-out;
+
+                #nav-links {
+                    height: auto;
+                    flex-direction: column;
+                    margin: 0 0 20px 0;
+                    text-align: center;
+                    width: 100%;
+                    visibility: hidden;
+                    transition: all 0.01s ease-in-out;
+
+                    li {
+                        margin: 0;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
