@@ -10,6 +10,7 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require('express');
 const User = require("./user");
+const { RSA_NO_PADDING } = require('constants')
 
 const app = express()
 
@@ -24,7 +25,7 @@ mongoose.connect("mongodb+srv://raj-aryan:RajAryan@cluster0.tpzwd.mongodb.net/au
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ encoded: true, extended: true }))
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "https://plus-ultra-d3.herokuapp.com",
     credentials: true
 }))
 app.use(session({
@@ -73,7 +74,8 @@ app.get("/", (req, res) => {
 
 /******************** HOME-ROUTE ********************/
 app.get("/home", (req, res) => {
-    res.render("<h1>Home</h1>")
+    console.log("<h1>Home</h1>");
+    // res.render("<h1>Home</h1>")
 })
 /******************** HOME-ROUTE ********************/
 
@@ -92,42 +94,51 @@ app.get("/students", (req, res) => {
 
 
 /******************** LOGIN-ROUTE ********************/
-app.post("/login", (req, res, next) => {
-    // User.findOne({username: "hello"}, (err, found) => {
-    //     if(err) console.error(error);
-    //     if(found) {
-    //         console.log(found);
-    //     } else {
-    //         console.log("ERROR");
-    //     }
-    // })
+app.post("/login", async (req, res, next) => {
     
-    passport.authenticate("local", (err, user, info) => {
+    await passport.authenticate("local", (err, user, info) => {
         if(err) throw(err)
-        if(!user) res.send("No such user exists!");
-        else {
-            req.login(user, err => {
-                if(err) throw(err)
+        if(!user) res.send("No user found")
+        if(user) {
+            req.login(user, (error) => {
+                if(error) throw(error)
                 res.send('Logged in successfully!')
-                console.log(req.user.username);
+                console.log("USER: ", user)
             })
         }
     })(req, res, next)
 })
+
 app.get("/logout", (req, res) => {
     req.logout()
-    res.redirect("/students")
+    // res.redirect("/students")
+    res.send("Logged out!")
 })
 /******************** LOGIN-ROUTE ********************/
 
 
 
 
-
+// {$or: [{email: req.body.email}, {username: req.body.username}]}
 /******************** SIGNUP-ROUTE ********************/
-app.get("/signup", (req, res) => {
-    console.log("At signup page now!");
-})
+app.post("/signup", (req, res) => {
+    User.findOne( {$or: [{email: req.body.email}, {username: req.body.username}]}, async(err,doc) => {
+        if(err) throw(err);
+        if(doc) res.send("User exists")
+
+        if(!doc) {
+            const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+            const newUser = new User({
+                email: req.body.email,
+                username: req.body.username,
+                password: hashedPassword
+            });
+            await newUser.save();
+            res.send("New User registered")
+        }
+    });
+});
 /******************** SIGNUP-ROUTE ********************/
 
 
