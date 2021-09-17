@@ -491,11 +491,11 @@ table {
   font-size: 2rem;
 }
 
-.login form.form1 {
+.login span.form1 {
   position: relative;
 }
 
-.login form.form1 .un {
+.login span.form1 .un {
   background-color: #f3e8fa;
   border: 2px solid rgba(0, 0, 0, 0.02);
   border-radius: 20px;
@@ -512,7 +512,7 @@ table {
   width: 76%;
 }
 
-.login form.form1 .pass {
+.login span.form1 .pass {
   background: #f3e8fa;
   border: 2px solid rgba(0, 0, 0, 0.02);
   border-radius: 20px;
@@ -530,7 +530,7 @@ table {
   text-align: center;
 }
 
-.login form.form1 .submit {
+.login span.form1 .submit {
   background: none;
   border: 1px solid #8236CB;
   border-radius: 5em;
@@ -546,33 +546,33 @@ table {
   transition: all 0.25s ease-in-out;
 }
 
-.login form.form1 .submit:hover {
+.login span.form1 .submit:hover {
   background-color: #8236CB;
   color: #FFFFFF;
 }
 
-.login form.form1 div {
+.login span.form1 div {
   background-color: #8236CB;
   margin-top: 50px;
   padding: 15px 0;
 }
 
-.login form.form1 div #forgot {
+.login span.form1 div #forgot {
   color: #E1BEE7;
   margin: 0;
 }
 
-.login form.form1 div #make-account {
+.login span.form1 div #make-account {
   margin: 10px 0 0;
 }
 
-.login form.form1 .route {
+.login span.form1 .route {
   background-color: #8236CB;
   margin: 20px 0 0;
   padding: 20px 0;
 }
 
-.login form.form1 a {
+.login span.form1 a {
   color: #E1BEE7;
   text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
   text-decoration: none;
@@ -580,11 +580,11 @@ table {
   transition: all 0.25s ease-in-out;
 }
 
-.login form.form1 a:hover {
+.login span.form1 a:hover {
   color: #FFFFFF;
 }
 
-.login form.form1 .un:focus, .login form.form1 .pass:focus {
+.login span.form1 .un:focus, .login span.form1 .pass:focus {
   border: 2px solid #8236CB !important;
 }
 

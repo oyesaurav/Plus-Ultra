@@ -7,7 +7,7 @@ export default function LoginPage () {
     const [loginUsername, setLoginUsername] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
     
-    function login() {
+    const login = () => {
         Axios({
           method: "POST",
           data: {
@@ -15,29 +15,44 @@ export default function LoginPage () {
             password: loginPassword
           },
           withCredentials: true,
-          url: "http://localhost:5000/login",
-        }).then((res) => console.log(res))
-      }
+          url: "https://plus-ultra-d6.herokuapp.com/login",
+        }).then((res) => {
+            // console.log(res);
+            if(res.data === "No user found") {
+                window.location="/login"
+            } else {
+                window.location="/"
+            }
+        })
+    }
+
+    const logout = () => {
+        Axios({
+            method: "GET",
+            withCredentials: true,
+            url: "https://plus-ultra-d6.herokuapp.com/logout",
+          }).then(window.location="/")
+    }
 
     return(
         <div>
             <div className="login">
 
                 <p className="sign" align="center">Log in</p>
-                <form className="form1" method="post" action="../../login">
+                <span className="form1">
                     <input className="un " type="text" placeholder="username" onChange={(e) => setLoginUsername(e.target.value)} />
                     <input className="pass" type="password" placeholder="password" onChange={(e) => setLoginPassword(e.target.value)} />
-                    <button type="submit" className="submit" align="center" onClick={login}>Log in</button>
+                    <button className="submit" align="center" onClick={login}>Log in</button>
                     <div>
                         {/* eslint-disable-next-line */}
                         <p id="forgot" align="center"><a href="#">Forgot Password?</a></p>
                         <p id="make-account" align="center">
                             <Link to="signup">Sign Up</Link><br /><br />
                             {/* <Link to="editprofile">Edit profile</Link> */}
-                            <Link to="logout">Logout</Link>
+                            <Link to="logout" onClick={logout}>Logout</Link>
                         </p>
                     </div>
-                </form>  
+                </span>  
                 
             </div>
             <div  className="container-home"><Footer /></div>
