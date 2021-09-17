@@ -15,7 +15,7 @@ export default function LoginPage () {
             password: loginPassword
           },
           withCredentials: true,
-          url: "https://plus-ultra-d3.herokuapp.com/login",
+          url: "https://plus-ultra-d6.herokuapp.com/login",
         }).then((res) => {
             // console.log(res);
             if(res.data === "No user found") {
@@ -30,7 +30,7 @@ export default function LoginPage () {
         Axios({
             method: "GET",
             withCredentials: true,
-            url: "https://plus-ultra-d3.herokuapp.com/logout",
+            url: "https://plus-ultra-d6.herokuapp.com/logout",
           }).then(window.location="/")
     }
 

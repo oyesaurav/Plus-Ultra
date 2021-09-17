@@ -25,7 +25,7 @@ mongoose.connect("mongodb+srv://raj-aryan:RajAryan@cluster0.tpzwd.mongodb.net/au
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ encoded: true, extended: true }))
 app.use(cors({
-    origin: "https://plus-ultra-d3.herokuapp.com",
+    origin: "https://plus-ultra-d6.herokuapp.com",
     credentials: true
 }))
 app.use(session({
