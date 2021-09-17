@@ -168,8 +168,8 @@ app.post("/send", (req, res) => {
 
 /******************** TEST-ROUTE ********************/
 app.get('*', (req, res) => {
-    // res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-    res.render("<h1>Go back!</h1>")
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+    // res.render("<h1>Go back!</h1>")
 });
 /******************** TEST-ROUTE ********************/
 
