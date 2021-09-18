@@ -25,7 +25,7 @@ mongoose.connect("mongodb+srv://raj-aryan:RajAryan@cluster0.tpzwd.mongodb.net/au
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ encoded: true, extended: true }))
 app.use(cors({
-    origin: "https://plus-ultra-d6.herokuapp.com",
+    origin: "https://plus-ultra-try.herokuapp.com/",
     credentials: true
 }))
 app.use(session({
@@ -42,34 +42,25 @@ require('./passportConfig')(passport)
 
 
 
-
-
-
+/******************** ROOT-ROUTE ********************/
+app.get("/", (req, res,next) => {
+    console.log("At homepage now!");
+    next()
+})
+/******************** ROOT-ROUTE ********************/
 
 
 
 
 /******************** TEST-ROUTE ********************/
-app.get("/helloServer", (req, res) => {
+app.get("/helloServer", (req, res,next) => {
     res.json({
         message: "Hello from server!"
     })
     // res.redirect("/")
+    next()
 })
 /******************** TEST-ROUTE ********************/
-
-
-
-
-
-/******************** ROOT-ROUTE ********************/
-app.get("/", (req, res) => {
-    console.log("At homepage now!");
-})
-/******************** ROOT-ROUTE ********************/
-
-
-
 
 
 /******************** HOME-ROUTE ********************/
@@ -84,8 +75,9 @@ app.get("/home", (req, res) => {
 
 
 /******************** STUDENTS-ROUTE ********************/
-app.get("/students", (req, res) => {
+app.get("/students", (req, res,next) => {
     console.log("At students page now!");
+    next()
 })
 /******************** STUDENTS-ROUTE ********************/
 
@@ -109,10 +101,11 @@ app.post("/login", async (req, res, next) => {
     })(req, res, next)
 })
 
-app.get("/logout", (req, res) => {
+app.get("/logout", (req, res,next) => {
     req.logout()
     // res.redirect("/students")
     res.send("Logged out!")
+    next()
 })
 /******************** LOGIN-ROUTE ********************/
 
@@ -121,7 +114,7 @@ app.get("/logout", (req, res) => {
 
 // {$or: [{email: req.body.email}, {username: req.body.username}]}
 /******************** SIGNUP-ROUTE ********************/
-app.post("/signup", (req, res) => {
+app.post("/signup", (req, res,) => {
     User.findOne( {$or: [{email: req.body.email}, {username: req.body.username}]}, async(err,doc) => {
         if(err) throw(err);
         if(doc) res.send("User exists")
