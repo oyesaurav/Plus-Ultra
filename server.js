@@ -13,6 +13,8 @@ const User = require("./user");
 // const { RSA_NO_PADDING } = require('constants')
 
 const app = express()
+const LOCAL_PORT = "http://localhost:3000"
+const BUILD_PORT = "https://plus-ultra-d6.herokuapp.com"
 
 mongoose.connect(process.env.MONGO_DB_URL, {
     useNewUrlParser: true,
@@ -25,7 +27,7 @@ mongoose.connect(process.env.MONGO_DB_URL, {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ encoded: true, extended: true }))
 app.use(cors({
-    origin: "https://plus-ultra-d6.herokuapp.com",
+    origin: LOCAL_PORT,
     credentials: true
 }))
 app.use(session({
@@ -103,14 +105,15 @@ app.post("/login", async (req, res, next) => {
             req.login(user, (error) => {
                 if(error) throw(error)
                 res.send('Logged in successfully!')
-                console.log("USER: ", user)
+                // console.log("USER: ", user)
+                // res.redirect(`/dashboard/${user.username}`)
             })
         }
     })(req, res, next)
 })
 
 app.get("/logout", (req, res) => {
-    // req.logout()
+    req.logout()
     // res.redirect("/students")
     res.send("Logged out!")
 })
@@ -155,11 +158,39 @@ app.get("/editprofile", (req, res) => {
 
 
 
-/******************** TEST-ROUTE ********************/
-app.post("/send", (req, res) => {
-    res.send(req.body)
+/******************** DASHBOARD-ROUTE ********************/
+// app.post("/send", (req, res) => {
+//     res.send(req.body)
+// })
+app.get("/dashboard/:id",async (req, res) => {
+    const user = req.params.id
+    
+    User.findOne({username: user}, (err, found) => {
+        if(err) throw(err)
+        if(!found) {
+            res.json({ message: "BYE" })
+            // console.log("BYE");
+        }
+        if (found) {
+            const foundUser = {...found._doc}
+            // console.log(foundUser);
+            res.json({
+                email: foundUser.email,
+                username: foundUser.username,
+                message: "HELLO" 
+            })
+            // console.log("HELLO");
+        }
+    })
+    
 })
-/******************** TEST-ROUTE ********************/
+
+app.post("/:id", (req, res) => {
+    const user = req.params.id
+    console.log(user);
+    res.send("Updated profile")
+})
+/******************** DASHBOARD-ROUTE ********************/
 
 
 

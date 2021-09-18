@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+// eslint-disable-next-line
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom"
+// import { Link } from 'react-router-dom'
 import Footer from '../Footer'
+// import DashBoard from './DashBoard'
 import Axios from 'axios'
 
 export default function LoginPage () {
+    
+    // eslint-disable-next-line
+    const [isLoggedIn, setLoggedIn] = useState(false)
     const [loginUsername, setLoginUsername] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
     
@@ -15,27 +21,27 @@ export default function LoginPage () {
             password: loginPassword
           },
           withCredentials: true,
-          url: "https://plus-ultra-d6.herokuapp.com/login",
+          url: "http://localhost:5000/login",
         }).then((res) => {
             // console.log(res);
             if(res.data === "No user found") {
+                setLoggedIn(false)
                 window.location="/login"
             } else {
-                window.location="/"
+                setLoggedIn(true)
+                // window.location = "/"
+                window.location=`/dashboard/${loginUsername}`
             }
         })
     }
 
-    const logout = () => {
-        Axios({
-            method: "GET",
-            withCredentials: true,
-            url: "https://plus-ultra-d6.herokuapp.com/logout",
-          }).then(window.location="/")
-    }
-
     return(
         <div>
+            {/* <BrowserRouter> */}
+                {/* <Switch>
+                    <Route path="/dashboard" component={DashBoard} />
+                </Switch> */}
+            
             <div className="login">
 
                 <p className="sign" align="center">Log in</p>
@@ -47,14 +53,14 @@ export default function LoginPage () {
                         {/* eslint-disable-next-line */}
                         <p id="forgot" align="center"><a href="#">Forgot Password?</a></p>
                         <p id="make-account" align="center">
-                            <Link to="signup">Sign Up</Link><br /><br />
-                            {/* <Link to="editprofile">Edit profile</Link> */}
-                            <Link to="logout" onClick={logout}>Logout</Link>
+                            {/* {isLoggedIn ? <Link to="signup">Sign Up<br /></Link> : <Link to="editprofile">Edit profile<br /></Link>} */}
+                            <Link to="signup">Sign Up<br /></Link>
                         </p>
                     </div>
                 </span>  
                 
             </div>
+            {/* </BrowserRouter> */}
             <div  className="container-home"><Footer /></div>
         </div>
     )

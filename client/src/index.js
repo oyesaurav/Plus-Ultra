@@ -10,6 +10,7 @@ import LoginPage from './components/authpage/LoginPage';
 import SignupPage from './components/authpage/SignupPage';
 import EditProfile from './components/students/EditProfile'
 import Test from './components/Test'
+import DashBoard from './components/authpage/DashBoard'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -22,6 +23,7 @@ ReactDOM.render(
     <Route path="/signup" component={SignupPage} />
     <Route path="/editprofile" component={EditProfile} />
     <Route path="/helloServer" component={Test} />
+    <Route path="/dashboard/:id" component={DashBoard} />
     <Route>
       <h2>Error page</h2>
     </Route>
