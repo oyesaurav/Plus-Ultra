@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+// eslint-disable-next-line
 import { Link } from "react-router-dom";
 // import "../../css/styles.css"
 
@@ -7,6 +8,7 @@ export default function Notice() {
   const noticeRef = useRef('')
   const timeTableRef = useRef('')
 
+  // eslint-disable-next-line
   function toggle() {
     setShow(!showNotice)
   }
