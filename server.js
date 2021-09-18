@@ -10,11 +10,11 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require('express');
 const User = require("./user");
-const { RSA_NO_PADDING } = require('constants')
+// const { RSA_NO_PADDING } = require('constants')
 
 const app = express()
 
-mongoose.connect("mongodb+srv://raj-aryan:RajAryan@cluster0.tpzwd.mongodb.net/auth?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGO_DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, () => {
@@ -29,12 +29,12 @@ app.use(cors({
     credentials: true
 }))
 app.use(session({
-    secret: "secretcode",
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true
 }))
 // passport.use(User.createStrategy())
-app.use(cookieParser("secretcode"))
+app.use(cookieParser(process.env.SECRET))
 app.use(passport.initialize())
 app.use(passport.session())
 require('./passportConfig')(passport)
@@ -64,7 +64,7 @@ app.get("/helloServer", (req, res) => {
 
 /******************** ROOT-ROUTE ********************/
 app.get("/", (req, res) => {
-    console.log("At homepage now!");
+    res.send("At homepage now!");
 })
 /******************** ROOT-ROUTE ********************/
 
@@ -74,7 +74,7 @@ app.get("/", (req, res) => {
 
 /******************** HOME-ROUTE ********************/
 app.get("/home", (req, res) => {
-    console.log("<h1>Home</h1>");
+    res.send("<h1>Home</h1>");
     // res.render("<h1>Home</h1>")
 })
 /******************** HOME-ROUTE ********************/
@@ -85,7 +85,7 @@ app.get("/home", (req, res) => {
 
 /******************** STUDENTS-ROUTE ********************/
 app.get("/students", (req, res) => {
-    console.log("At students page now!");
+    res.send("At students page now!");
 })
 /******************** STUDENTS-ROUTE ********************/
 
@@ -110,7 +110,7 @@ app.post("/login", async (req, res, next) => {
 })
 
 app.get("/logout", (req, res) => {
-    req.logout()
+    // req.logout()
     // res.redirect("/students")
     res.send("Logged out!")
 })
@@ -147,7 +147,7 @@ app.post("/signup", (req, res) => {
 
 /******************** EDIT-PROFILE-ROUTE ********************/
 app.get("/editprofile", (req, res) => {
-    console.log("At editprofile page now!");
+    res.send("At editprofile page now!");
 })
 /******************** EDIT-PROFILE-ROUTE ********************/
 
@@ -157,7 +157,7 @@ app.get("/editprofile", (req, res) => {
 
 /******************** TEST-ROUTE ********************/
 app.post("/send", (req, res) => {
-    console.log(req.body)
+    res.send(req.body)
 })
 /******************** TEST-ROUTE ********************/
 
