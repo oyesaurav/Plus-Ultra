@@ -121,7 +121,7 @@ app.get("/logout", (req, res,next) => {
 
 // {$or: [{email: req.body.email}, {username: req.body.username}]}
 /******************** SIGNUP-ROUTE ********************/
-app.post("/signup", (req, res,) => {
+app.post("/signup", (req, res) => {
     User.findOne( {$or: [{email: req.body.email}, {username: req.body.username}]}, async(err,doc) => {
         if(err) throw(err);
         if(doc) res.send("User exists")
@@ -168,7 +168,7 @@ function loggedIn(req, res, next) {
     }
   }
 
-app.get("/dashboard/:id",loggedIn,async (req, res) => {
+app.get("/dashboard/:id",loggedIn,async (req, res,next) => {
     const user = req.params.id
     
     User.findOne({username: user}, (err, found) => {
@@ -176,6 +176,7 @@ app.get("/dashboard/:id",loggedIn,async (req, res) => {
         if(!found) {
             // res.json({ message: "BYE" })
             res.send("No user found")
+            next()
             // console.log("BYE");
         }
         if (found) {
@@ -189,7 +190,7 @@ app.get("/dashboard/:id",loggedIn,async (req, res) => {
             })
             // console.log("HELLO");
         }
-    })
+    })(req,res,next)
     
 })
 
