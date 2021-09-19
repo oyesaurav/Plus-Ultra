@@ -42,7 +42,7 @@ function DashBoard({match:{params:{id}}}) {
                 email: userData.email
             },
             withCredentials: true,
-            url: `http://localhost:5000/updateProfile/${userData.id}`,
+            url: `https://plus-ultra-try.herokuapp.com/updateProfile/${userData.id}`,
         }).then(res => console.log(res))
           .then(window.location = `/dashboard/${userData.username}`)
     }
@@ -51,7 +51,7 @@ function DashBoard({match:{params:{id}}}) {
         Axios({
             method: "GET",
             withCredentials: true,
-            url: "http://localhost:5000/logout"
+            url: "https://plus-ultra-try.herokuapp.com/logout"
         }).then(res => console.log(res))
         .then(Auth(false))
         .then(window.location="/login")
