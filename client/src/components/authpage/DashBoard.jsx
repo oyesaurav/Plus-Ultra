@@ -58,11 +58,12 @@ function DashBoard({match:{params:{id}}}) {
         
     }
 
-    function dashboard() {
-        <>
-        <h1>{userData.username}'s DashBoard</h1>
+    return (
+        
+        <div>
+            <h1>{userData.username}'s DashBoard</h1>
             <br /><br />
-            <button onClick={()=> console.log(userData.username)}>ss</button>
+            {/* <button onClick={()=> console.log(userData.username)}>ss</button> */}
             <span>
                 <input placeholder="username" 
                        disabled={disableInput} 
@@ -102,20 +103,14 @@ function DashBoard({match:{params:{id}}}) {
             <button onClick={() => {
                 setDisableInput(true)
                 save()
-                console.log(userData);
+                // console.log(userData);
             }}>Save changes</button>
             <br /><br />
 
             {/* <Link to="logout">Logout</Link> */}
             <button onClick={logout}>Logout</button>
 
-            <div className="container-home"><Footer /></div></>
-    }
-
-    return (
-        
-        <div>
-                {userData.username === "" ? <h1>Error</h1> : <dashboard/>}
+            <div className="container-home"><Footer /></div>    
             
         </div> 
     )
