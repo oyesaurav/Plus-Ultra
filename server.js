@@ -47,7 +47,7 @@ require('./passportConfig')(passport)
 
 /******************** ROOT-ROUTE ********************/
 app.get("/", (req, res,next) => {
-    res.send("At homepage now!");
+    console.log("At homepage now!");
     next()
 })
 /******************** ROOT-ROUTE ********************/
@@ -70,7 +70,7 @@ app.get("/helloServer", (req, res,next) => {
 
 /******************** HOME-ROUTE ********************/
 app.get("/home", (req, res,next) => {
-    res.send("<h1>Home</h1>");
+     console.log("<h1>Home</h1>");
     next()
     // res.render("<h1>Home</h1>")
 })
@@ -111,7 +111,7 @@ app.post("/login", async (req, res, next) => {
 app.get("/logout", (req, res,next) => {
     req.logout()
     // console.log("Successfully logged out!");
-    res.send("Logged out!")
+    // res.send("Logged out!")
     next()
 })
 /******************** LOGIN-ROUTE ********************/
@@ -147,7 +147,7 @@ app.post("/signup", (req, res,) => {
 
 /******************** EDIT-PROFILE-ROUTE ********************/
 app.get("/editprofile", (req, res,next) => {
-    res.send("At editprofile page now!");
+    console.log("At editprofile page now!");
     next()
 })
 /******************** EDIT-PROFILE-ROUTE ********************/
