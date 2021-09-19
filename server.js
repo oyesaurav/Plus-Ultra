@@ -10,11 +10,13 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require('express');
 const User = require("./user");
-const { RSA_NO_PADDING } = require('constants')
+// const { RSA_NO_PADDING } = require('constants')
 
 const app = express()
+const LOCAL_PORT = "http://localhost:3000"
+const BUILD_PORT = "https://plus-ultra-d6.herokuapp.com"
 
-mongoose.connect("mongodb+srv://raj-aryan:RajAryan@cluster0.tpzwd.mongodb.net/auth?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGO_DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, () => {
@@ -29,12 +31,12 @@ app.use(cors({
     credentials: true
 }))
 app.use(session({
-    secret: "secretcode",
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true
 }))
 // passport.use(User.createStrategy())
-app.use(cookieParser("secretcode"))
+app.use(cookieParser(process.env.SECRET))
 app.use(passport.initialize())
 app.use(passport.session())
 require('./passportConfig')(passport)
@@ -42,9 +44,10 @@ require('./passportConfig')(passport)
 
 
 
+
 /******************** ROOT-ROUTE ********************/
 app.get("/", (req, res,next) => {
-    console.log("At homepage now!");
+    res.send("At homepage now!");
     next()
 })
 /******************** ROOT-ROUTE ********************/
@@ -63,9 +66,12 @@ app.get("/helloServer", (req, res,next) => {
 /******************** TEST-ROUTE ********************/
 
 
+
+
 /******************** HOME-ROUTE ********************/
-app.get("/home", (req, res) => {
-    console.log("<h1>Home</h1>");
+app.get("/home", (req, res,next) => {
+    res.send("<h1>Home</h1>");
+    next()
     // res.render("<h1>Home</h1>")
 })
 /******************** HOME-ROUTE ********************/
@@ -76,7 +82,7 @@ app.get("/home", (req, res) => {
 
 /******************** STUDENTS-ROUTE ********************/
 app.get("/students", (req, res,next) => {
-    console.log("At students page now!");
+   console.log("At students page now!");
     next()
 })
 /******************** STUDENTS-ROUTE ********************/
@@ -95,7 +101,8 @@ app.post("/login", async (req, res, next) => {
             req.login(user, (error) => {
                 if(error) throw(error)
                 res.send('Logged in successfully!')
-                console.log("USER: ", user)
+                // console.log("USER: ", user)
+                // res.redirect(`/dashboard/${user.username}`)
             })
         }
     })(req, res, next)
@@ -103,7 +110,7 @@ app.post("/login", async (req, res, next) => {
 
 app.get("/logout", (req, res,next) => {
     req.logout()
-    // res.redirect("/students")
+    // console.log("Successfully logged out!");
     res.send("Logged out!")
     next()
 })
@@ -139,8 +146,9 @@ app.post("/signup", (req, res,) => {
 
 
 /******************** EDIT-PROFILE-ROUTE ********************/
-app.get("/editprofile", (req, res) => {
-    console.log("At editprofile page now!");
+app.get("/editprofile", (req, res,next) => {
+    res.send("At editprofile page now!");
+    next()
 })
 /******************** EDIT-PROFILE-ROUTE ********************/
 
@@ -148,11 +156,61 @@ app.get("/editprofile", (req, res) => {
 
 
 
-/******************** TEST-ROUTE ********************/
-app.post("/send", (req, res) => {
-    console.log(req.body)
+/******************** DASHBOARD-ROUTE ********************/
+// app.post("/send", (req, res) => {
+//     res.send(req.body)
+// })
+function loggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      next();
+    } else {
+      res.redirect('/');
+    }
+  }
+
+app.get("/dashboard/:id",loggedIn,async (req, res) => {
+    const user = req.params.id
+    
+    User.findOne({username: user}, (err, found) => {
+        if(err) throw(err)
+        if(!found) {
+            // res.json({ message: "BYE" })
+            res.send("No user found")
+            // console.log("BYE");
+        }
+        if (found) {
+            const foundUser = {...found._doc}
+            // console.log(foundUser._id);
+            res.json({
+                id: foundUser._id,
+                email: foundUser.email,
+                username: foundUser.username,
+                message: "HELLO" 
+            })
+            // console.log("HELLO");
+        }
+    })
+    
 })
-/******************** TEST-ROUTE ********************/
+
+app.post("/updateProfile/:id", (req, res) => {
+    const userId = req.params.id
+    const updatedUser = {
+        $set: {
+            username: req.body.username,
+            email: req.body.email
+        }
+    }
+
+    // console.log(userId, req.body.username, req.body.email);
+    
+    User.updateOne({_id: userId}, updatedUser, (err, found) => {
+        if(err) throw(err)
+        if(!found) res.send("Something went wrong")
+        if(found) res.send("Updated profile")
+    })
+})
+/******************** DASHBOARD-ROUTE ********************/
 
 
 

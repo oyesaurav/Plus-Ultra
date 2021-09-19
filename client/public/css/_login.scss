@@ -20,6 +20,18 @@
         // padding-bottom: 10px;
         // padding: 30px 0 10px 0;
         position: relative;
+
+        #error-message {
+            background-color: #ffa0a0;
+            // border: 1px solid #FF2442;
+            border: none;
+            border-radius: 5px;
+            color: #FF2442;
+            margin: 0 auto 20px auto;
+            padding: 15px;
+            text-align: center;
+            width: fit-content;
+        }
         
         .un {
             // background: rgba(136, 126, 126, 0.04);

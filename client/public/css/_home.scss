@@ -27,6 +27,82 @@
 
         }
     }
+
+    .container-contact-us {
+        background-color: #F3F1F5;
+        display: flex;
+        justify-content: space-around;
+
+        .div-animated-json {
+            align-items: center;
+            display: flex;
+            width: 50%;
+            #animated-json {
+                float: right;
+                height: auto;
+                margin: auto;
+                width: 80%;
+            }
+        }
+
+        form {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 50%;
+
+            button {
+                align-items: center;
+                background: transparent;
+                border: 1px solid #8236CB;
+                border-radius: 50px;
+                color: #8236CB;
+                display: flex;
+                height: 50px;
+                // justify-content: center;
+                margin: 20px auto 0;
+                padding: 0 0 0 45px;
+                position: relative;
+                width: 150px;
+
+                #submit-animated-icon {
+                    position: absolute;
+                    padding: 0 25px 0 150px;
+                    right: 0;
+
+                    &:hover {
+                        color: #F3F1F5;
+                    }
+                }
+
+                &:hover, &:focus {
+                    background: #8236CB;
+                    color: $white;
+                    cursor: pointer;
+                }
+            }
+
+            input, textarea {
+                background: transparent;
+                border: 1px solid #c8c6c6;
+                display: block;
+                margin: 5px auto;
+                width: 100%;
+
+                &:focus {
+                    outline: 0.5px solid #9D9D9D;
+                }
+            }
+            input {
+                height: 2rem;
+            }
+
+            h1 {
+                margin: 0;
+            }
+        }
+    }
     
     .container-notice {
         align-items: center;
@@ -118,6 +194,47 @@
                 }
             }
         }
+
+        .container-contact-us {
+            display: flex;
+            flex-direction: column;
+
+            .div-animated-json {
+                width: 100%;
+                #animated-json {
+                    display: flex;
+                    height: auto;
+                    justify-content: center;
+                    margin: auto;
+                    width: 70%;
+                }
+            }
+
+            form {
+                width: 100%;
+    
+                button {
+                    width: 150px;
+
+                    &:hover, &:focus {
+                        color: $white;
+                        cursor: pointer;
+                    }
+                }
+    
+                input, textarea {
+                    background: transparent;
+                    border: 1px solid #c8c6c6;
+                    display: block;
+                    margin: 5px auto;
+                    width: 85%;
+                }
+                input {
+                    height: 1.5rem;
+                }
+            }
+        }
+
         .container-notice {
             text-align: center;
             width: 95%;
