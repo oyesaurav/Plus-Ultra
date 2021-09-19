@@ -27,7 +27,7 @@ export default function LoginPage () {
             password: loginPassword
           },
           withCredentials: true,
-          url: "http://localhost:5000/login",
+          url: "https://plus-ultra-try.herokuapp.com/login",
         }).then((res) => {
             // console.log(res);
             if(res.data === "No user found") {
@@ -45,7 +45,7 @@ export default function LoginPage () {
         
     }
 
-   
+
 
     return(
         <div>

@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_DB_URL, {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ encoded: true, extended: true }))
 app.use(cors({
-    origin: LOCAL_PORT,
+    origin: "https://plus-ultra-try.herokuapp.com/",
     credentials: true
 }))
 app.use(session({
@@ -45,7 +45,6 @@ require('./passportConfig')(passport)
 
 
 
-
 /******************** ROOT-ROUTE ********************/
 app.get("/", (req, res,next) => {
     res.send("At homepage now!");
@@ -56,13 +55,13 @@ app.get("/", (req, res,next) => {
 
 
 
-
 /******************** TEST-ROUTE ********************/
-app.get("/helloServer", (req, res) => {
+app.get("/helloServer", (req, res,next) => {
     res.json({
         message: "Hello from server!"
     })
     // res.redirect("/")
+    next()
 })
 /******************** TEST-ROUTE ********************/
 
@@ -83,7 +82,7 @@ app.get("/home", (req, res,next) => {
 
 /******************** STUDENTS-ROUTE ********************/
 app.get("/students", (req, res,next) => {
-    res.send("At students page now!");
+   console.log("At students page now!");
     next()
 })
 /******************** STUDENTS-ROUTE ********************/
@@ -109,10 +108,11 @@ app.post("/login", async (req, res, next) => {
     })(req, res, next)
 })
 
-app.get("/logout", (req, res) => {
+app.get("/logout", (req, res,next) => {
     req.logout()
     // console.log("Successfully logged out!");
     res.send("Logged out!")
+    next()
 })
 /******************** LOGIN-ROUTE ********************/
 
@@ -121,7 +121,7 @@ app.get("/logout", (req, res) => {
 
 // {$or: [{email: req.body.email}, {username: req.body.username}]}
 /******************** SIGNUP-ROUTE ********************/
-app.post("/signup", (req, res) => {
+app.post("/signup", (req, res,) => {
     User.findOne( {$or: [{email: req.body.email}, {username: req.body.username}]}, async(err,doc) => {
         if(err) throw(err);
         if(doc) res.send("User exists")
