@@ -5,6 +5,7 @@ import { Link, useHistory,withRouter} from 'react-router-dom'
 import Footer from '../Footer'
 // eslint-disable-next-line
 import Axios from 'axios'
+import {Auth} from './LoginPage'
 // import './css/styles.css'
 
 function DashBoard({match:{params:{id}}}) {
@@ -52,15 +53,16 @@ function DashBoard({match:{params:{id}}}) {
             withCredentials: true,
             url: "http://localhost:5000/logout"
         }).then(res => console.log(res))
+        .then(Auth(false))
         .then(window.location="/login")
+        
     }
 
-    return (
-        <div>
-            <h1>{id}'s DashBoard</h1>
-            <Link onClick={() => {
-                window.location = "/"
-            }}>HOME</Link><br /><br />
+    function dashboard() {
+        <>
+        <h1>{userData.username}'s DashBoard</h1>
+            <br /><br />
+            <button onClick={()=> console.log(userData.username)}>ss</button>
             <span>
                 <input placeholder="username" 
                        disabled={disableInput} 
@@ -107,8 +109,15 @@ function DashBoard({match:{params:{id}}}) {
             {/* <Link to="logout">Logout</Link> */}
             <button onClick={logout}>Logout</button>
 
-            <div className="container-home"><Footer /></div>
-        </div>
+            <div className="container-home"><Footer /></div></>
+    }
+
+    return (
+        
+        <div>
+                {userData.username === "" ? <h1>Error</h1> : <dashboard/>}
+            
+        </div> 
     )
 }
 

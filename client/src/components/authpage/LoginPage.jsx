@@ -5,6 +5,12 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom"
 import Footer from '../Footer'
 // import DashBoard from './DashBoard'
 import Axios from 'axios'
+import ProtectedRoute from '../ProtectedRoute'
+
+ export function Auth(props) {
+        return props
+    }
+
 
 export default function LoginPage () {
     
@@ -30,10 +36,16 @@ export default function LoginPage () {
             } else {
                 setLoggedIn(true)
                 // window.location = "/"
-                //window.location=`/dashboard/${loginUsername}`
+                Auth(isLoggedIn)
+                window.location=`/dashboard/${loginUsername}`
+            
             }
         })
+        
+        
     }
+
+   
 
     return(
         <div>
@@ -45,8 +57,7 @@ export default function LoginPage () {
                     <input className="un " type="text" placeholder="username" onChange={(e) => setLoginUsername(e.target.value)} />
                     <input className="pass" type="password" placeholder="password" onChange={(e) => setLoginPassword(e.target.value)} />
                     
-                    {isLoggedIn === false ? <p id="error-message">Incorrect username or password</p> : <p></p>}
-                    
+                    {isLoggedIn === false ? <p id="error-message">Incorrect username or password</p> : <p></p> }
                     <button className="submit" align="center" onClick={login}>Log in</button>
                     <div>
                         {/* eslint-disable-next-line */}

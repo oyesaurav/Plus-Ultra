@@ -1,31 +1,33 @@
 import React, { useState,useEffect } from 'react'
 import {Route, Redirect} from 'react-router-dom'
+import {Auth} from './authpage/LoginPage'
+import Home from './homepage/home'
 
 function ProtectedRoute({component: Component, ...rest}) {
 
-    const [isAuth,setIsAuth] = useState(false)
+    // const [isAuth,setIsAuth] = useState(false)
 
-    useEffect(() => {
-        fetch("/login")
-          .then(res => {
+    // useEffect(() => {
+    //     fetch("/dashboard/:id")
+    //       .then(res => {
                    
-               if(res.data === "Logged in successfully!"){
-                   setIsAuth(true)
-               } else {
-                   setIsAuth(false)
-               }
-          })
-      }, [])
+    //            if(res.data === "No auth" ){
+    //                setIsAuth(false)
+    //            } else {
+    //                setIsAuth(true)
+    //            }
+    //       })
+    //   }, [isAuth])
 
     return (
         <Route
          {...rest}
          render= {(props) => {
             
-            if(isAuth) {
+            if(Auth) {
                 return <Component />
             } else {
-                <Redirect to={{ pathname: "/", state:{from : props.location} }} />
+                return <Home/>
             }
         }}
         />

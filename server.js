@@ -160,13 +160,22 @@ app.get("/editprofile", (req, res,next) => {
 // app.post("/send", (req, res) => {
 //     res.send(req.body)
 // })
-app.get("/dashboard/:id",async (req, res) => {
+function loggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      next();
+    } else {
+      res.redirect('/');
+    }
+  }
+
+app.get("/dashboard/:id",loggedIn,async (req, res) => {
     const user = req.params.id
     
     User.findOne({username: user}, (err, found) => {
         if(err) throw(err)
         if(!found) {
-            res.json({ message: "BYE" })
+            // res.json({ message: "BYE" })
+            res.send("No user found")
             // console.log("BYE");
         }
         if (found) {
