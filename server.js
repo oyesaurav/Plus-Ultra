@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_DB_URL, {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ encoded: true, extended: true }))
 app.use(cors({
-    origin: "https://plus-ultra-try.herokuapp.com/",
+    origin: "https://plus-ultra-d8.netlify.app/",
     credentials: true
 }))
 app.use(session({
