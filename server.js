@@ -46,6 +46,12 @@ require('./passportConfig')(passport)
 
 
 
+/******************** ROOT-ROUTE ********************/
+app.get("/", (req, res,next) => {
+    res.send("At homepage now!");
+    next()
+})
+/******************** ROOT-ROUTE ********************/
 
 
 
@@ -63,20 +69,10 @@ app.get("/helloServer", (req, res) => {
 
 
 
-
-/******************** ROOT-ROUTE ********************/
-app.get("/", (req, res) => {
-    res.send("At homepage now!");
-})
-/******************** ROOT-ROUTE ********************/
-
-
-
-
-
 /******************** HOME-ROUTE ********************/
-app.get("/home", (req, res) => {
+app.get("/home", (req, res,next) => {
     res.send("<h1>Home</h1>");
+    next()
     // res.render("<h1>Home</h1>")
 })
 /******************** HOME-ROUTE ********************/
@@ -86,8 +82,9 @@ app.get("/home", (req, res) => {
 
 
 /******************** STUDENTS-ROUTE ********************/
-app.get("/students", (req, res) => {
+app.get("/students", (req, res,next) => {
     res.send("At students page now!");
+    next()
 })
 /******************** STUDENTS-ROUTE ********************/
 
@@ -149,8 +146,9 @@ app.post("/signup", (req, res) => {
 
 
 /******************** EDIT-PROFILE-ROUTE ********************/
-app.get("/editprofile", (req, res) => {
+app.get("/editprofile", (req, res,next) => {
     res.send("At editprofile page now!");
+    next()
 })
 /******************** EDIT-PROFILE-ROUTE ********************/
 

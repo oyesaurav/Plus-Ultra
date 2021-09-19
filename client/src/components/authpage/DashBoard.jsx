@@ -1,13 +1,13 @@
 // eslint-disable-next-line
 import React, { useEffect, useState } from 'react'
 // eslint-disable-next-line
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory,withRouter} from 'react-router-dom'
 import Footer from '../Footer'
 // eslint-disable-next-line
 import Axios from 'axios'
 // import './css/styles.css'
 
-export default function DashBoard({match:{params:{id}}}) {
+function DashBoard({match:{params:{id}}}) {
     
     const [disableInput, setDisableInput] = useState(true)
     const [userData, setUserData] = useState({
@@ -107,7 +107,9 @@ export default function DashBoard({match:{params:{id}}}) {
             {/* <Link to="logout">Logout</Link> */}
             <button onClick={logout}>Logout</button>
 
-            {/* <div className="container-home"><Footer /></div> */}
+            <div className="container-home"><Footer /></div>
         </div>
     )
 }
+
+export default withRouter(DashBoard)

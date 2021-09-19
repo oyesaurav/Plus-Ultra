@@ -30,7 +30,7 @@ export default function LoginPage () {
             } else {
                 setLoggedIn(true)
                 // window.location = "/"
-                window.location=`/dashboard/${loginUsername}`
+                //window.location=`/dashboard/${loginUsername}`
             }
         })
     }
