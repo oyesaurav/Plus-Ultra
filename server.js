@@ -114,7 +114,7 @@ app.post("/login", async (req, res, next) => {
 
 app.get("/logout", (req, res) => {
     req.logout()
-    // res.redirect("/students")
+    // console.log("Successfully logged out!");
     res.send("Logged out!")
 })
 /******************** LOGIN-ROUTE ********************/
@@ -173,8 +173,9 @@ app.get("/dashboard/:id",async (req, res) => {
         }
         if (found) {
             const foundUser = {...found._doc}
-            // console.log(foundUser);
+            // console.log(foundUser._id);
             res.json({
+                id: foundUser._id,
                 email: foundUser.email,
                 username: foundUser.username,
                 message: "HELLO" 
@@ -185,10 +186,22 @@ app.get("/dashboard/:id",async (req, res) => {
     
 })
 
-app.post("/:id", (req, res) => {
-    const user = req.params.id
-    console.log(user);
-    res.send("Updated profile")
+app.post("/updateProfile/:id", (req, res) => {
+    const userId = req.params.id
+    const updatedUser = {
+        $set: {
+            username: req.body.username,
+            email: req.body.email
+        }
+    }
+
+    // console.log(userId, req.body.username, req.body.email);
+    
+    User.updateOne({_id: userId}, updatedUser, (err, found) => {
+        if(err) throw(err)
+        if(!found) res.send("Something went wrong")
+        if(found) res.send("Updated profile")
+    })
 })
 /******************** DASHBOARD-ROUTE ********************/
 

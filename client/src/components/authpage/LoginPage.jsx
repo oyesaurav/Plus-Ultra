@@ -9,7 +9,7 @@ import Axios from 'axios'
 export default function LoginPage () {
     
     // eslint-disable-next-line
-    const [isLoggedIn, setLoggedIn] = useState(false)
+    const [isLoggedIn, setLoggedIn] = useState()
     const [loginUsername, setLoginUsername] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
     
@@ -26,7 +26,7 @@ export default function LoginPage () {
             // console.log(res);
             if(res.data === "No user found") {
                 setLoggedIn(false)
-                window.location="/login"
+                // window.location="/login"
             } else {
                 setLoggedIn(true)
                 // window.location = "/"
@@ -37,10 +37,6 @@ export default function LoginPage () {
 
     return(
         <div>
-            {/* <BrowserRouter> */}
-                {/* <Switch>
-                    <Route path="/dashboard" component={DashBoard} />
-                </Switch> */}
             
             <div className="login">
 
@@ -48,6 +44,9 @@ export default function LoginPage () {
                 <span className="form1">
                     <input className="un " type="text" placeholder="username" onChange={(e) => setLoginUsername(e.target.value)} />
                     <input className="pass" type="password" placeholder="password" onChange={(e) => setLoginPassword(e.target.value)} />
+                    
+                    {isLoggedIn === false ? <p id="error-message">Incorrect username or password</p> : <p></p>}
+                    
                     <button className="submit" align="center" onClick={login}>Log in</button>
                     <div>
                         {/* eslint-disable-next-line */}
@@ -60,7 +59,7 @@ export default function LoginPage () {
                 </span>  
                 
             </div>
-            {/* </BrowserRouter> */}
+            
             <div  className="container-home"><Footer /></div>
         </div>
     )

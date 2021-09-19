@@ -9,14 +9,14 @@ import Axios from 'axios'
 
 export default function DashBoard({match:{params:{id}}}) {
     
-    // const [userName, setUserName] = useState("")
-    // const [Email, setEmail] = useState("")
     const [disableInput, setDisableInput] = useState(true)
     const [userData, setUserData] = useState({
-        username: "", email: ""
+        id: "", username: "", email: ""
     })
-    
-    // const {username: u, email: e} = userData
+    const currentData = {
+        currentUsername: userData.username,
+        currentEmail: userData.email
+    }
 
     useEffect(() => {
         fetch(`/dashboard/${id}`)
@@ -25,12 +25,14 @@ export default function DashBoard({match:{params:{id}}}) {
             // console.log(res);
             setUserData({
                 ...userData,
+                id: res.id,
                 username: res.username,
                 email: res.email
             })
         })
+        // eslint-disable-next-line
     }, [id])
-    // , [id] DEPENDENCY ARRAY IN useEffect()
+
     const save = () => {
         Axios({
             method: "POST",
@@ -39,34 +41,62 @@ export default function DashBoard({match:{params:{id}}}) {
                 email: userData.email
             },
             withCredentials: true,
-            url: `http://localhost:5000/${userData.username}`,
+            url: `http://localhost:5000/updateProfile/${userData.id}`,
         }).then(res => console.log(res))
+          .then(window.location = `/dashboard/${userData.username}`)
+    }
+
+    const logout = () => {
+        Axios({
+            method: "GET",
+            withCredentials: true,
+            url: "http://localhost:5000/logout"
+        }).then(res => console.log(res))
+        .then(window.location="/login")
     }
 
     return (
         <div>
             <h1>{id}'s DashBoard</h1>
-
+            <Link onClick={() => {
+                window.location = "/"
+            }}>HOME</Link><br /><br />
             <span>
-                <input disabled={disableInput} onChange={e => {
-                    setUserData({
-                        ...userData,
-                        username: e.target.value
-                    })
-                }} type="text" value={userData.username} /> <br />
-                <input disabled={disableInput} onChange={e => {
-                    setUserData({
-                        ...userData,
-                        email: e.target.value
-                    })
-                }} type="text" value={userData.email} /> <br />
+                <input placeholder="username" 
+                       disabled={disableInput} 
+                       onChange={e => {
+                            setUserData({
+                                ...userData,
+                                username: e.target.value
+                            })
+                        }} 
+                        type="text" 
+                        value={currentData.currentUsername}
+                />
+                <br />
+                <input placeholder="email" 
+                       disabled={disableInput} 
+                       onChange={e => {
+                            setUserData({
+                                ...userData,
+                                email: e.target.value
+                            })
+                        }} 
+                        type="text" 
+                        value={currentData.currentEmail} 
+                    /> 
+                <br />
             </span>
 
             {/* <Link to="editprofile">Edit profile<br /></Link> */}
             <br /><button onClick={() => {
                 setDisableInput(false)
+                // console.log(currentData);
             }}>Edit profile</button>
-            <br /><br />
+
+            <br />
+            <br />
+
             <button onClick={() => {
                 setDisableInput(true)
                 save()
@@ -74,9 +104,10 @@ export default function DashBoard({match:{params:{id}}}) {
             }}>Save changes</button>
             <br /><br />
 
-            <Link to="logout">Logout</Link>
+            {/* <Link to="logout">Logout</Link> */}
+            <button onClick={logout}>Logout</button>
 
-            <div  className="container-home"><Footer /></div>
+            {/* <div className="container-home"><Footer /></div> */}
         </div>
     )
 }
