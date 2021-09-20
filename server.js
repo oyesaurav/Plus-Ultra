@@ -188,7 +188,7 @@ app.get("/dashboard/:id",loggedIn,async (req, res,next) => {
                 username: foundUser.username,
                 message: "HELLO" 
             })
-            // res.end()
+            res.end()
             // next()
             // console.log("HELLO");
         }
