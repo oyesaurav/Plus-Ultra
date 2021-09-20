@@ -20,8 +20,12 @@ function DashBoard({match:{params:{id}}}) {
     }
 
     useEffect(() => {
-        fetch(`/dashboard/${id}`)
-        .then(res => res.json())
+        Axios({
+            method: "GET",
+            withCredentials: "true",
+            url: `https://plus-ultra-try.herokuapp.com/dashboard/${id}`
+        })
+        .then(res => res.data)
         .then(res => {
             // console.log(res);
             setUserData({
