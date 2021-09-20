@@ -4,6 +4,7 @@ import Footer from "../Footer";
 import Notice from "./Notice";
 import { BrowserRouter, Route, Switch, Link, } from "react-router-dom";
 import Table from "./table";
+import ContactUs from "./ContactUs";
 
 export default function Home() {
 
@@ -33,6 +34,7 @@ export default function Home() {
                  <Route path="/timetable" component={Table} />
                 </Switch>
             </div>
+            <ContactUs />
             <Footer />
         </div>
         </BrowserRouter>
