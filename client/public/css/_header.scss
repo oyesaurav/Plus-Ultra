@@ -7,11 +7,13 @@
 
     // NAVBAR-CONTAINER
     .navbar {
+        background-color: #8236CB;
         display: flex;
         justify-content: space-between;
         padding: 0 30px;
 
         h2 {
+            color: $white;
             button {
                 visibility: hidden;
             }
@@ -40,13 +42,13 @@
                     // width: 100%;
     
                     a {
-                        color: $black;
+                        color: $white;
                         font-weight: 500;
                         text-decoration: none;
                     }
     
                     &:hover {
-                        background-color: #f3e8fa;
+                        background-color: #ED50F1;
                     }
                 }
             }
@@ -61,8 +63,12 @@
     
     // HOMEPAGE
     .homeBg {
-        background-image: url("../images/homeBg3.jpg");
-        background-position: center;
+        align-items: center;
+        // background: linear-gradient(90deg, rgba(130,54,203,1) 0%, rgba(253,185,252,1) 50%, rgba(130,54,203,1) 100%);
+        display: flex;
+        justify-content: center;
+        background-image: url("../images/transparentBg.png");
+        // background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         // border-bottom: 10px solid red;

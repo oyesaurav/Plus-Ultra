@@ -11,11 +11,18 @@ export default function DashBoard({match:{params:{id}}}) {
     
     const [disableInput, setDisableInput] = useState(true)
     const [userData, setUserData] = useState({
-        id: "", username: "", email: ""
+        id: "", username: "", email: "", about: "",
+        achievements: "",
+        contact: "",
+        skills: "",
     })
     const currentData = {
         currentUsername: userData.username,
-        currentEmail: userData.email
+        currentEmail: userData.email,
+        currentAbout: userData.about,
+        currentAcheivements: userData.achievements,
+        currentContact: userData.contact,
+        currentSkills: userData.skills
     }
 
     useEffect(() => {
@@ -27,7 +34,11 @@ export default function DashBoard({match:{params:{id}}}) {
                 ...userData,
                 id: res.id,
                 username: res.username,
-                email: res.email
+                email: res.email,
+                about: res.about,
+                achievements: res.achievements,
+                contact: res.contact,
+                skills: res.skills
             })
         })
         // eslint-disable-next-line
@@ -38,7 +49,11 @@ export default function DashBoard({match:{params:{id}}}) {
             method: "POST",
             data: {
                 username: userData.username,
-                email: userData.email
+                email: userData.email,
+                about: userData.about,
+                achievements: userData.achievements,
+                contact: userData.contact,
+                skills: userData.skills
             },
             withCredentials: true,
             url: `http://localhost:5000/updateProfile/${userData.id}`,
@@ -56,11 +71,8 @@ export default function DashBoard({match:{params:{id}}}) {
     }
 
     return (
-        <div>
+        <div  className="container-dashboard">
             <h1>{id}'s DashBoard</h1>
-            <Link onClick={() => {
-                window.location = "/"
-            }}>HOME</Link><br /><br />
             <span>
                 <input placeholder="username" 
                        disabled={disableInput} 
@@ -86,28 +98,83 @@ export default function DashBoard({match:{params:{id}}}) {
                         value={currentData.currentEmail} 
                     /> 
                 <br />
+                <textarea
+                       placeholder="About" 
+                       disabled={disableInput} 
+                       onChange={e => {
+                            setUserData({
+                                ...userData,
+                                about: e.target.value
+                            })
+                        }}
+                        rows="7"
+                        cols="30"
+                        type="text" 
+                        value={currentData.currentAbout} 
+                    /> 
+                <br />
+                <textarea placeholder="Achievements" 
+                       disabled={disableInput} 
+                       onChange={e => {
+                            setUserData({
+                                ...userData,
+                                achievements: e.target.value
+                            })
+                        }} 
+                        rows="7"
+                        cols="30"
+                        type="text" 
+                        value={currentData.currentAcheivements} 
+                    /> 
+                <br />
+                <input placeholder="contact"
+                       disabled={disableInput} 
+                       onChange={e => {
+                            setUserData({
+                                ...userData,
+                                contact: e.target.value
+                            })
+                        }} 
+                        type="text" 
+                        value={currentData.currentContact} 
+                    /> 
+                <br />
+                <textarea placeholder="text" 
+                       disabled={disableInput} 
+                       onChange={e => {
+                            setUserData({
+                                ...userData,
+                                skills: e.target.value
+                            })
+                        }} 
+                        rows="7"
+                        cols="30"
+                        type="text" 
+                        value={currentData.currentSkills} 
+                    /> 
+                <br />
             </span>
 
-            {/* <Link to="editprofile">Edit profile<br /></Link> */}
-            <br /><button onClick={() => {
-                setDisableInput(false)
-                // console.log(currentData);
-            }}>Edit profile</button>
-
             <br />
-            <br />
+            <div id="buttons">
+                <button onClick={() => {
+                    setDisableInput(false)
+                    // console.log(currentData);
+                }}>Edit profile</button>
 
-            <button onClick={() => {
-                setDisableInput(true)
-                save()
-                console.log(userData);
-            }}>Save changes</button>
-            <br /><br />
+                <button onClick={() => {
+                    setDisableInput(true)
+                    save()
+                    console.log(userData);
+                }}>Save changes</button>
 
+                
+            </div>
             {/* <Link to="logout">Logout</Link> */}
-            <button onClick={logout}>Logout</button>
+            <button id="logout-button" onClick={logout}>Logout</button>
+            
 
-            {/* <div className="container-home"><Footer /></div> */}
+            <div className="container-home"><Footer /></div>
         </div>
     )
 }

@@ -1,7 +1,8 @@
 
 const array = [
     {
-        id: "B120001",
+        username: "B120001",
+        password: "$2a$10$0Y4f4oEwgbu/V4.czQgOrOL2KrcTPS01JEbEjdRx7HQOg9SeNYS82",
         avatar: "man1",
         cover: "cover1.jpg",
         name: "Student 1",
@@ -14,7 +15,8 @@ const array = [
         achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
-        id: "B120002",
+        username: "B120002",
+        password: "$2a$10$0Y4f4oEwgbu/V4.czQgOrOL2KrcTPS01JEbEjdRx7HQOg9SeNYS82",
         avatar: "man2",
         cover: "cover2.jpg",
         name: "Student 2",
@@ -27,7 +29,8 @@ const array = [
         achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
-        id: "B120003",
+        username: "B120003",
+        password: "$2a$10$0Y4f4oEwgbu/V4.czQgOrOL2KrcTPS01JEbEjdRx7HQOg9SeNYS82",
         avatar: "woman1",
         cover: "cover3.jpg",
         name: "Student 3",
@@ -40,7 +43,8 @@ const array = [
         achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
-        id: "B120004",
+        username: "B120004",
+        password: "$2a$10$0Y4f4oEwgbu/V4.czQgOrOL2KrcTPS01JEbEjdRx7HQOg9SeNYS82",
         avatar: "man3",
         cover: "cover2.jpg",
         name: "Student 4",
@@ -53,7 +57,8 @@ const array = [
         achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
-        id: "B120005",
+        username: "B120005",
+        password: "$2a$10$0Y4f4oEwgbu/V4.czQgOrOL2KrcTPS01JEbEjdRx7HQOg9SeNYS82",
         avatar: "woman2",
         cover: "cover1.jpg",
         name: "Student 5",
@@ -66,7 +71,8 @@ const array = [
         achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
-        id: "B120006",
+        username: "B120006",
+        password: "$2a$10$0Y4f4oEwgbu/V4.czQgOrOL2KrcTPS01JEbEjdRx7HQOg9SeNYS82",
         avatar: "woman3",
         cover: "cover3.jpg",
         name: "Student 6",
@@ -79,7 +85,8 @@ const array = [
         achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
-        id: "B120007",
+        username: "B120007",
+        password: "$2a$10$0Y4f4oEwgbu/V4.czQgOrOL2KrcTPS01JEbEjdRx7HQOg9SeNYS82",
         avatar: "man4",
         cover: "cover3.jpg",
         name: "Student 7",
@@ -92,7 +99,8 @@ const array = [
         achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
-        id: "B120008",
+        username: "B120008",
+        password: "$2a$10$0Y4f4oEwgbu/V4.czQgOrOL2KrcTPS01JEbEjdRx7HQOg9SeNYS82",
         avatar: "woman4",
         cover: "cover2.jpg",
         name: "Student 8",
@@ -105,7 +113,8 @@ const array = [
         achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
-        id: "B120009",
+        username: "B120009",
+        password: "$2a$10$0Y4f4oEwgbu/V4.czQgOrOL2KrcTPS01JEbEjdRx7HQOg9SeNYS82",
         avatar: "woman5",
         cover: "cover1.jpg",
         name: "Student 9",
@@ -118,7 +127,8 @@ const array = [
         achievements: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatum."
     },
     {
-        id: "B120010",
+        username: "B120010",
+        password: "$2a$10$0Y4f4oEwgbu/V4.czQgOrOL2KrcTPS01JEbEjdRx7HQOg9SeNYS82",
         avatar: "man5",
         cover: "cover3.jpg",
         name: "Student 10",

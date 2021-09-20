@@ -41,12 +41,13 @@ export default function Nav() {
                     <li><a href="#">Contact Us</a></li>
                     {/* eslint-disable-next-line */}
                     <li>
-                      <Link to="students">Students</Link>
+                      <a href="/students">Students</a>
+                      {/* <Link to="students">Students</Link> */}
                     </li>
                     <li style={{fontSize: "2rem", padding: "0 10px", margin:"0"}}>
-                      <Link to="login">
-                        <i className="fas fa-user-circle"></i>
-                      </Link>
+                      {/* <Link to="login"> */}
+                        <a href="/login"><i className="fas fa-user-circle"></i></a>
+                      {/* </Link> */}
                     </li>
                 </ul>
                 {/* <div id="signup">Sign Up</div> */}

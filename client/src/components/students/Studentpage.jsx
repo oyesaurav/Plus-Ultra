@@ -8,8 +8,8 @@ function StudentPage() {
     const data = array.map(student => {
         return (
             <Students 
-            key={student.id} 
-            Id={student.id}
+            key={student.username} 
+            Id={student.username}
             Avatar={student.avatar}
             Cover={student.cover}
             Name={student.name}

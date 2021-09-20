@@ -5,6 +5,7 @@
 }
 
 .container-home .navbar {
+  background-color: #8236CB;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,6 +13,10 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 0 30px;
+}
+
+.container-home .navbar h2 {
+  color: #fff;
 }
 
 .container-home .navbar h2 button {
@@ -59,13 +64,13 @@
 }
 
 .container-home .navbar .nav-list #nav-links li a {
-  color: #121212;
+  color: #fff;
   font-weight: 500;
   text-decoration: none;
 }
 
 .container-home .navbar .nav-list #nav-links li:hover {
-  background-color: #f3e8fa;
+  background-color: #ED50F1;
 }
 
 .container-home .navbar .nav-list #signup {
@@ -81,8 +86,16 @@
 }
 
 .container-home .homeBg {
-  background-image: url("../images/homeBg3.jpg");
-  background-position: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-image: url("../images/transparentBg.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 425px;
@@ -902,6 +915,7 @@ table {
 }
 
 .container-home .navbar {
+  background-color: #8236CB;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -909,6 +923,10 @@ table {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 0 30px;
+}
+
+.container-home .navbar h2 {
+  color: #fff;
 }
 
 .container-home .navbar h2 button {
@@ -956,13 +974,13 @@ table {
 }
 
 .container-home .navbar .nav-list #nav-links li a {
-  color: #121212;
+  color: #fff;
   font-weight: 500;
   text-decoration: none;
 }
 
 .container-home .navbar .nav-list #nav-links li:hover {
-  background-color: #f3e8fa;
+  background-color: #ED50F1;
 }
 
 .container-home .navbar .nav-list #signup {
@@ -978,8 +996,16 @@ table {
 }
 
 .container-home .homeBg {
-  background-image: url("../images/homeBg3.jpg");
-  background-position: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-image: url("../images/transparentBg.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 425px;
@@ -1038,6 +1064,85 @@ table {
   .container-home .navbar .nav-list #nav-links li {
     margin: 0;
     width: 100%;
+  }
+}
+
+.container-dashboard {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container-dashboard span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+}
+
+.container-dashboard span input {
+  height: 35px;
+}
+
+.container-dashboard #buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container-dashboard #buttons button {
+  background: none;
+  border: 1px solid #8236CB;
+  border-radius: 5em;
+  color: #8236CB;
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 10px 40px;
+  margin: 20px 10px;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.container-dashboard #buttons button:hover {
+  background-color: #8236CB;
+  color: #FFFFFF;
+}
+
+.container-dashboard #logout-button {
+  background: none;
+  border: 1px solid #8236CB;
+  border-radius: 5em;
+  color: #8236CB;
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 10px 40px;
+  margin: 20px 0;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.container-dashboard #logout-button:hover {
+  background-color: #8236CB;
+  color: #FFFFFF;
+}
+
+@media screen and (max-width: 800px) {
+  .container-dashboard span {
+    width: 90%;
   }
 }
 

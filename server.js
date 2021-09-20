@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_DB_URL, {
 })
 
 /******************** MIDDLEWARE ********************/
-app.use(bodyParser.json())
+// app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ encoded: true, extended: true }))
 app.use(cors({
     origin: LOCAL_PORT,
@@ -35,7 +35,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }))
-// passport.use(User.createStrategy())
+app.use(express.json())
 app.use(cookieParser(process.env.SECRET))
 app.use(passport.initialize())
 app.use(passport.session())
@@ -87,6 +87,17 @@ app.get("/home", (req, res) => {
 
 /******************** STUDENTS-ROUTE ********************/
 app.get("/students", (req, res) => {
+    // User.find((err, found) => {
+    //     if(err) throw(err)
+    //     if(!found) {
+    //         res.json({ message: "BYE" })
+    //         // console.log("BYE");
+    //     }
+    //     if (found) {
+    //         const foundUser = {...found._doc}
+    //         // console.log(foundUser._id);
+    //     }
+    // })
     res.send("At students page now!");
 })
 /******************** STUDENTS-ROUTE ********************/
@@ -162,24 +173,29 @@ app.get("/editprofile", (req, res) => {
 // app.post("/send", (req, res) => {
 //     res.send(req.body)
 // })
-app.get("/dashboard/:id",async (req, res) => {
+app.get("/dashboard/:id", (req, res, next) => {
     const user = req.params.id
     
     User.findOne({username: user}, (err, found) => {
         if(err) throw(err)
         if(!found) {
-            res.json({ message: "BYE" })
+            res.status(404).json({ message: "BYE" })
             // console.log("BYE");
         }
         if (found) {
             const foundUser = {...found._doc}
-            // console.log(foundUser._id);
-            res.json({
+            // console.log(found);
+            res.status(200).json({
                 id: foundUser._id,
                 email: foundUser.email,
                 username: foundUser.username,
+                about: foundUser.about,
+                achievements: foundUser.achievements,
+                contact: foundUser.contact,
+                skills: foundUser.skills,
                 message: "HELLO" 
             })
+            next()
             // console.log("HELLO");
         }
     })
@@ -191,7 +207,11 @@ app.post("/updateProfile/:id", (req, res) => {
     const updatedUser = {
         $set: {
             username: req.body.username,
-            email: req.body.email
+            email: req.body.email,
+            about: req.body.about,
+            achievements: req.body.achievements,
+            contact: req.body.contact,
+            skills: req.body.skills,
         }
     }
 

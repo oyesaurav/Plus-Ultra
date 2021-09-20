@@ -15,7 +15,9 @@ export default function Home() {
 
             {/* <Nav /> */}
 
-            <div className="homeBg"></div>
+            <div className="homeBg">
+            <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_iorpbol0.json"  background="transparent"  speed="1"  style={{width: "auto", height: "100%"}}  loop  autoplay></lottie-player>
+            </div>
             <hr />
             <h1>WELCOME</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora tempore sit saepe eos incidunt, magni eaque praesentium dolor modi impedit laborum, repellat, officiis dolorem aliquid repellendus odio quasi cumque quaerat porro ex pariatur beatae ipsam?</p>
