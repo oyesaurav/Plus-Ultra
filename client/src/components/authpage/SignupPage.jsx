@@ -18,7 +18,7 @@ export default function SignupPage () {
             password: password
           },
           withCredentials: true,
-          url: "https://plus-ultra-try.herokuapp.com/signup",
+          url: "http://localhost:5000/signup",
         }).then((res) => {
             if(res.data === "User exists") {
                 window.location="/login"

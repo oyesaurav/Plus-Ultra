@@ -14,7 +14,7 @@ const User = require("./user");
 
 const app = express()
 const LOCAL_PORT = "http://localhost:3000"
-const BUILD_PORT = "https://plus-ultra-d6.herokuapp.com"
+const BUILD_PORT = "https://plus-ultra-try.herokuapp.com/"
 
 mongoose.connect(process.env.MONGO_DB_URL, {
     useNewUrlParser: true,
@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_DB_URL, {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ encoded: true, extended: true }))
 app.use(cors({
-    origin: "https://plus-ultra-d8.netlify.app/",
+    origin: "https://plus-ultra-try.herokuapp.com/",
     credentials: true
 }))
 app.use(session({
@@ -188,7 +188,8 @@ app.get("/dashboard/:id",loggedIn,async (req, res,next) => {
                 username: foundUser.username,
                 message: "HELLO" 
             })
-            next()
+            // res.end()
+            // next()
             // console.log("HELLO");
         }
     })
