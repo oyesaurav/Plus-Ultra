@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import "../../css/styles.css"
+import { Auth } from "../authpage/LoginPage";
 
-export default function Nav() {
+export default function Nav(props) {
     const [showLinks, setShowLinks] = useState(false);
     const linksContainerRef = useRef(null);
     const linksRef = useRef(null);
@@ -25,7 +25,7 @@ export default function Nav() {
     return (
         <div className="navbar">
 
-            <h2 id="logo">Plus Ultra <button onClick={toggleLinks}>
+            <h2 id="logo">Plus Ultra<button onClick={toggleLinks}>
               {!showLinks ? <i className="fas fa-bars"></i> : <i className="fas fa-times"></i>}
               </button></h2> 
 
@@ -33,7 +33,8 @@ export default function Nav() {
                 <ul id="nav-links" ref={linksRef}>
                     {/* eslint-disable-next-line */}
                     <li>
-                      <Link to="">Home</Link>
+                      {props.id === undefined ? <Link to="">Home</Link> : <Link to={`/home/${props.id}`}>Home</Link>}
+                      {/* <Link to="">Home</Link> */}
                     </li>
                     {/* eslint-disable-next-line */}
                     <li><a href="#">About Us</a></li>

@@ -172,12 +172,13 @@
 }
 
 .container-home .container-contact-us {
-  background-color: #F3F1F5;
+  background-color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  padding: 25px 0;
 }
 
 .container-home .container-contact-us .div-animated-json {
@@ -229,6 +230,8 @@
   margin: 20px auto 0;
   padding: 0 0 0 45px;
   position: relative;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   width: 150px;
 }
 
@@ -253,7 +256,7 @@
   border: 1px solid #c8c6c6;
   display: block;
   margin: 5px auto;
-  width: 100%;
+  width: 95%;
 }
 
 .container-home .container-contact-us form input:focus, .container-home .container-contact-us form textarea:focus {
@@ -318,8 +321,93 @@
 
 .container-home .container-notice #container-notice .notice-div ul li {
   background-color: #F3F1F5;
-  padding: 5px 0;
+  padding: 10px;
+  position: relative;
   margin: 0 0 10px 0;
+}
+
+.container-home .container-notice #container-notice .notice-div ul li span {
+  margin-bottom: 5px;
+}
+
+.container-home .container-notice #container-notice .notice-div ul li button {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.container-home .container-notice #container-notice .notice-div ul li button:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.container-home .container-notice #container-notice .notice-div ul li button a {
+  color: #121212;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.container-home .container-notice #container-notice .notice-div ul li button a:hover {
+  color: #8236CB;
+}
+
+.container-home .container-notice #container-notice span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.container-home .container-notice #container-notice span button {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: transparent;
+  border: 1px solid #8236CB;
+  border-radius: 50px;
+  color: #8236CB;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 35px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+  position: relative;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  width: 150px;
+}
+
+.container-home .container-notice #container-notice span button:hover, .container-home .container-notice #container-notice span button:focus {
+  background: #8236CB;
+  color: #fff;
+  cursor: pointer;
+}
+
+.container-home .container-notice #container-notice span input, .container-home .container-notice #container-notice span textarea {
+  background: transparent;
+  border: 1px solid #c8c6c6;
+  margin-bottom: 10px;
+  -webkit-transition: all 0.05s ease-in-out;
+  transition: all 0.05s ease-in-out;
+}
+
+.container-home .container-notice #container-notice span input:focus, .container-home .container-notice #container-notice span textarea:focus {
+  outline: 1px solid #c8c6c6;
+}
+
+.container-home .container-notice #container-notice span input {
+  height: 30px;
 }
 
 .container-home .container-notice img {
@@ -1039,6 +1127,134 @@ table {
     margin: 0;
     width: 100%;
   }
+}
+
+.container-dashboard {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container-dashboard span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+}
+
+.container-dashboard span input {
+  height: 35px;
+}
+
+.container-dashboard #buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container-dashboard #buttons button {
+  background: none;
+  border: 1px solid #8236CB;
+  border-radius: 5em;
+  color: #8236CB;
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 10px 40px;
+  margin: 20px 10px;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.container-dashboard #buttons button:hover {
+  background-color: #8236CB;
+  color: #FFFFFF;
+}
+
+.container-dashboard #logout-button {
+  background: none;
+  border: 1px solid #8236CB;
+  border-radius: 5em;
+  color: #8236CB;
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 10px 40px;
+  margin: 20px 0;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.container-dashboard #logout-button:hover {
+  background-color: #8236CB;
+  color: #FFFFFF;
+}
+
+@media screen and (max-width: 800px) {
+  .container-dashboard span {
+    width: 90%;
+  }
+}
+
+#container-update-notice {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#container-update-notice span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 70%;
+}
+
+#container-update-notice span button {
+  background: none;
+  border: 1px solid #8236CB;
+  border-radius: 50px;
+  color: #8236CB;
+  font-size: 1.25rem;
+  height: 45px;
+  margin: auto;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  width: 150px;
+}
+
+#container-update-notice span button:hover {
+  background: #8236CB;
+  color: #FFFFFF;
+  cursor: pointer;
 }
 
 body {
