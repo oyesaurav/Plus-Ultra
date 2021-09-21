@@ -14,9 +14,11 @@ const Notice = require('./notice')
 // const { RSA_NO_PADDING } = require('constants')
 
 const app = express()
+
 const REACT_PORT = "http://localhost:3000"
 const NODE_PORT = "http://localhost:5000"
 const BUILD_PORT = "https://plus-ultra-d6.herokuapp.com"
+
 
 mongoose.connect(process.env.MONGO_DB_URL, {
     useNewUrlParser: true,
@@ -58,7 +60,6 @@ app.get("/home/:id", (req, res) => {
     // console.log(id);
 })
 /******************** ROOT-ROUTE ********************/
-
 
 
 
@@ -183,6 +184,7 @@ function loggedIn(req, res, next) {
   }
 
   app.get("/dash/:id",loggedIn, (req, res, next) => {
+
     const user = req.params.id
     
     User.findOne({username: user}, (err, found) => {
@@ -204,8 +206,10 @@ function loggedIn(req, res, next) {
                 skills: foundUser.skills,
                 message: "HELLO" 
             })
+
             // next()
             // console.log("HELLO");
+
         }
     })
     
@@ -297,11 +301,18 @@ app.post("/edit-notice/:id", (req, res) => {
 
 
 if(process.env.NODE_ENV === "production") {
+
     app.use(express.static("client/build"))
+
     app.get("/*", function(req, res) {
         res.sendFile(path.join(__dirname, "./client/build/index.html"));
       });
 }
+
+// app.get("*", function (req, res) {
+//     res.sendFile(path.join(__dirname, "./client/public/index.html"));
+//   });
+
 
 app.listen(process.env.PORT || 5000, () => {
     console.log("Server running on port 5000");

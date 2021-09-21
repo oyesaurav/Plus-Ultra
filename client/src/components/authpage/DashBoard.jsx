@@ -1,7 +1,9 @@
 // eslint-disable-next-line
 import React, { useEffect, useState } from 'react'
 // eslint-disable-next-line
+
 import { Link, useHistory } from 'react-router-dom'
+
 import Footer from '../Footer'
 // eslint-disable-next-line
 import Axios from 'axios'
@@ -45,8 +47,11 @@ export default function DashBoard({match:{params:{id}}}) {
                 skills: res.skills
             })
         })
+        // .then(board())
+        // .then(window.location=`/dashboard/${userData.username}`)
+        // window.location = `/dashboard/${userData.id}`
         // eslint-disable-next-line
-    }, [id])
+    }, [])
 
     const save = () => {
         Axios({
@@ -62,7 +67,7 @@ export default function DashBoard({match:{params:{id}}}) {
             withCredentials: true,
             url: `https://plus-ultra-try.herokuapp.com/updateProfile/${userData.id}`,
         }).then(res => console.log(res))
-          .then(window.location = `/dashboard/${userData.username}`)
+        .then(window.location = `/dashboard/${userData.username}`)
     }
 
     const logout = () => {
@@ -74,10 +79,12 @@ export default function DashBoard({match:{params:{id}}}) {
         .then(window.location="/login")
     }
 
+
     function dashboard() {
         return (
         <>
          <h1>{userData.username}'s DashBoard</h1>
+
             <span>
                 <input placeholder="username" 
                        disabled={disableInput} 
@@ -176,16 +183,19 @@ export default function DashBoard({match:{params:{id}}}) {
                 
             </div>
             {/* <Link to="logout">Logout</Link> */}
+
             <button id="logout-button" onClick={logout}>Logout</button>
             
 
             <div className="container-home"><Footer /></div>
         </>
 
+
         )
     }
 
     return (
+
         <div  className="container-dashboard">
            {userData.username === "" ? <h2>Not authenticated</h2> : dashboard()}
         </div>

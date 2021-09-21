@@ -5,8 +5,10 @@ import { Redirect } from 'react-router'
 import Footer from '../Footer'
 // import DashBoard from './DashBoard'
 import Axios from 'axios'
+
 // eslint-disable-next-line
 import ProtectedRoute from '../ProtectedRoute'
+
 
  export function Auth(props) {
         return props
