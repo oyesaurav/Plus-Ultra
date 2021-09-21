@@ -52,7 +52,14 @@ app.get("/", (req, res,next) => {
 })
 /******************** ROOT-ROUTE ********************/
 
-
+// app.get('/*', function(req, res,next) {
+//     res.sendFile(path.join(__dirname, "client/public/index.html"), function(err) {
+//        if (err) {
+//         return res.status(500).send(err)
+//        }
+//      })
+//      next()
+//   })
 
 
 /******************** TEST-ROUTE ********************/
@@ -162,6 +169,7 @@ app.get("/editprofile", (req, res,next) => {
 // })
 app.get("/dashboard/:id", (req, res,next) => {
     console.log("At dashboard now!");
+    res.sendFile(path.join(__dirname, "client/public/index.html"))
      next()
  })
 
