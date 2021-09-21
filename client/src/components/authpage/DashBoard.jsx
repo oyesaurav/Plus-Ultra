@@ -130,4 +130,4 @@ function DashBoard({match:{params:{id}}}) {
     )
 }
 
-export default withRouter(DashBoard)
+export default DashBoard
