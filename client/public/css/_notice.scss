@@ -1,0 +1,31 @@
+#container-update-notice {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    span {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 70%;
+
+        button {
+            background: none;
+            border: 1px solid #8236CB;
+            border-radius: 50px;
+            color: #8236CB;
+            font-size: 1.25rem;
+            height: 45px;
+            margin: auto;
+            transition: all 0.25s ease-in-out;
+            width: 150px;
+    
+            &:hover {
+                background: #8236CB;
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+        }
+    }
+}

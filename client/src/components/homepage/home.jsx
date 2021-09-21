@@ -5,19 +5,21 @@ import Notice from "./Notice";
 import { BrowserRouter, Route, Switch, Link, } from "react-router-dom";
 import Table from "./table";
 import ContactUs from "./ContactUs";
+import Nav from "./navbar";
 
-export default function Home() {
+export default function Home(props) {
 
 
     return (
-        <BrowserRouter>
         <div className="container-home">
+            <Nav id={props.match.params.id} />
+        <BrowserRouter>
 
-            {/* <Nav /> */}
 
             <div className="homeBg"></div>
             <hr />
-            <h1>WELCOME</h1>
+            <h1>WELCOME {props.match.params.id}</h1>
+            <p>{props.location.pathname}</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora tempore sit saepe eos incidunt, magni eaque praesentium dolor modi impedit laborum, repellat, officiis dolorem aliquid repellendus odio quasi cumque quaerat porro ex pariatur beatae ipsam?</p>
         
             <p className="buttons">
@@ -30,14 +32,15 @@ export default function Home() {
             </p>
             <div className="container-notice">
                 <Switch>
-                 <Route exact path="/" component={Notice} />
+                  {props.location.pathname === "/" ? <Route exact path="/" component={Notice} /> : <Route exact path={`/home/${props.match.params.id}`} render={(properties) => <Notice username={props.match.params.id} />} />}
+                 {/* <Route exact path="/" render={(properties) => <Notice username={props.match.params.id} />} /> */}
                  <Route path="/timetable" component={Table} />
                 </Switch>
             </div>
             <ContactUs />
             <Footer />
-        </div>
         </BrowserRouter>
+        </div>
         
     )
 }

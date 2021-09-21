@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 // eslint-disable-next-line
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom"
-// import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router'
 import Footer from '../Footer'
 // import DashBoard from './DashBoard'
 import Axios from 'axios'
+// eslint-disable-next-line
 import ProtectedRoute from '../ProtectedRoute'
 
  export function Auth(props) {
         return props
     }
-
 
 export default function LoginPage () {
     
@@ -27,7 +27,7 @@ export default function LoginPage () {
             password: loginPassword
           },
           withCredentials: true,
-          url: "https://plus-ultra-try.herokuapp.com/login",
+          url: "http://localhost:5000/login",
         }).then((res) => {
             // console.log(res);
             if(res.data === "No user found") {
@@ -36,9 +36,13 @@ export default function LoginPage () {
             } else {
                 setLoggedIn(true)
                 // window.location = "/"
-                Auth(isLoggedIn)
-                window.location=`/dashboard/${loginUsername}`
-            
+                Auth(true);
+                window.location = `/home/${loginUsername}`;
+                // <Redirect to={{
+                //     pathname: '/',
+                //     state: [{id: 1, username: loginUsername}]
+                // }} />
+                // window.location=`/dashboard/${loginUsername}`
             }
         })
         

@@ -6,13 +6,16 @@ import Footer from '../Footer'
 // eslint-disable-next-line
 import Axios from 'axios'
 import {Auth} from './LoginPage'
-// import './css/styles.css'
+
+export function isCR(props) {
+    return props
+}
 
 function DashBoard({match:{params:{id}}}) {
     
     const [disableInput, setDisableInput] = useState(true)
     const [userData, setUserData] = useState({
-        id: "", username: "", email: ""
+        id: "", username: "", email: "", cr:false
     })
     const currentData = {
         currentUsername: userData.username,
@@ -28,11 +31,16 @@ function DashBoard({match:{params:{id}}}) {
                 ...userData,
                 id: res.id,
                 username: res.username,
-                email: res.email
+                email: res.email,
+                cr: res.cr
             })
+            isCR(res.cr)
+            // window.location = `/dashboard/${id}`;
         })
         // eslint-disable-next-line
     }, [id])
+
+    // window.location = `/dashboard/${id}`;
 
     const save = () => {
         Axios({
@@ -42,7 +50,7 @@ function DashBoard({match:{params:{id}}}) {
                 email: userData.email
             },
             withCredentials: true,
-            url: `https://plus-ultra-try.herokuapp.com/updateProfile/${userData.id}`,
+            url: `http://localhost:5000/updateProfile/${userData.id}`,
         }).then(res => console.log(res))
           .then(window.location = `/dashboard/${userData.username}`)
     }
@@ -51,7 +59,7 @@ function DashBoard({match:{params:{id}}}) {
         Axios({
             method: "GET",
             withCredentials: true,
-            url: "https://plus-ultra-try.herokuapp.com/logout"
+            url: "http://localhost:5000/logout"
         }).then(res => console.log(res))
         .then(Auth(false))
         .then(window.location="/login")
@@ -62,6 +70,7 @@ function DashBoard({match:{params:{id}}}) {
         
         <div>
             <h1>{userData.username}'s DashBoard</h1>
+            {/* {userData.cr === false ? <p>Hi</p> : <p>Bye</p>} */}
             <br /><br />
             {/* <button onClick={()=> console.log(userData.username)}>ss</button> */}
             <span>

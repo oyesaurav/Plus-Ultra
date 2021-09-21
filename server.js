@@ -10,10 +10,12 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require('express');
 const User = require("./user");
+const Notice = require('./notice')
 // const { RSA_NO_PADDING } = require('constants')
 
 const app = express()
-const LOCAL_PORT = "http://localhost:3000"
+const REACT_PORT = "http://localhost:3000"
+const NODE_PORT = "http://localhost:5000"
 const BUILD_PORT = "https://plus-ultra-d6.herokuapp.com"
 
 mongoose.connect(process.env.MONGO_DB_URL, {
@@ -27,7 +29,7 @@ mongoose.connect(process.env.MONGO_DB_URL, {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ encoded: true, extended: true }))
 app.use(cors({
-    origin: "https://plus-ultra-d8.netlify.app/",
+    origin: "http://localhost:3000",
     credentials: true
 }))
 app.use(session({
@@ -50,6 +52,11 @@ app.get("/", (req, res,next) => {
     console.log("At homepage now!");
     next()
 })
+app.get("/home/:id", (req, res) => {
+    const id = req.params.id
+    res.send(id)
+    // console.log(id);
+})
 /******************** ROOT-ROUTE ********************/
 
 
@@ -57,11 +64,11 @@ app.get("/", (req, res,next) => {
 
 /******************** TEST-ROUTE ********************/
 app.get("/helloServer", (req, res,next) => {
-    res.json({
+    res.status(200).json({
         message: "Hello from server!"
     })
-    // res.redirect("/")
     next()
+    res.send("Hello from server!")
 })
 /******************** TEST-ROUTE ********************/
 
@@ -70,7 +77,7 @@ app.get("/helloServer", (req, res,next) => {
 
 /******************** HOME-ROUTE ********************/
 app.get("/home", (req, res,next) => {
-     console.log("<h1>Home</h1>");
+    console.log("<h1>Home</h1>");
     next()
     // res.render("<h1>Home</h1>")
 })
@@ -181,11 +188,12 @@ app.get("/dashboard/:id",loggedIn,async (req, res,next) => {
         }
         if (found) {
             const foundUser = {...found._doc}
-            // console.log(foundUser._id);
+            // console.log(foundUser);
             res.json({
                 id: foundUser._id,
                 email: foundUser.email,
                 username: foundUser.username,
+                cr: foundUser.cr,
                 message: "HELLO" 
             })
             next()
@@ -219,12 +227,53 @@ app.post("/updateProfile/:id", (req, res) => {
 
 
 
-/******************** TEST-ROUTE ********************/
-// app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-//     // res.render("<h1>Go back!</h1>")
-// });
-/******************** TEST-ROUTE ********************/
+/******************** NOTICE-ROUTE ********************/
+app.post("/noticeboard", (req, res) => {
+    const newNotice = new Notice({
+        date: req.body.date,
+        body: req.body.body
+    })
+    newNotice.save()
+    // console.log(newNotice);
+})
+app.get("/notice", (req, res) => {
+
+    Notice.find({}, (err, found) => {
+        if(err) throw(err)
+        if(!found) res.send("No new notices!")
+        if(found) {
+            res.json({message: found})
+            // res.send("Updated notices!")
+        }
+    })
+    // next()
+});
+app.post("/delete-notice/:id", (req, res) => {
+    const id = req.params.id
+    Notice.deleteOne({_id: id}, (err, deleted) => {
+        if(err) throw(err)
+        if(deleted) res.send("Notice deleted!")
+        else res.send("Something went wrong!")
+    })
+    // console.log(id);
+})
+app.post("/edit-notice/:id", (req, res) => {
+    const id = req.params.id
+    // console.log(id);
+    const updatedNotice = {
+        $set: {
+            date: req.body.date,
+            body: req.body.body
+        }
+    }
+    // console.log(updatedNotice);
+    Notice.updateOne({_id: id}, updatedNotice, (err, found) => {
+        if(err) throw(err)
+        if(!found) res.send("Something went wrong")
+        if(found) res.send("Updated profile")
+    })
+})
+/******************** NOTICE-ROUTE ********************/
 
 
 
