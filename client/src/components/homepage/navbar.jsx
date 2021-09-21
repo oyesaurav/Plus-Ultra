@@ -25,7 +25,7 @@ export default function Nav(props) {
     return (
         <div className="navbar">
 
-            <h2 id="logo">{Auth === true ? "Logged in" : "Logged out"}<button onClick={toggleLinks}>
+            <h2 id="logo">Plus Ultra<button onClick={toggleLinks}>
               {!showLinks ? <i className="fas fa-bars"></i> : <i className="fas fa-times"></i>}
               </button></h2> 
 

@@ -5,7 +5,14 @@ const user = new mongoose.Schema({
     username: String,
     email: String,
     password: String,
-    cr: Boolean
+    avatar: String,
+    cover: String,
+    name: String,
+    contact: String,
+    about: String,
+    education: String,
+    skills: String,
+    achievements: String
 })
 
 // user.plugin(passportLocalMongoose)

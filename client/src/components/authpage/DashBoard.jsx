@@ -1,30 +1,37 @@
 // eslint-disable-next-line
 import React, { useEffect, useState } from 'react'
 // eslint-disable-next-line
-import { Link, useHistory,withRouter} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Footer from '../Footer'
 // eslint-disable-next-line
 import Axios from 'axios'
-import {Auth} from './LoginPage'
+// import './css/styles.css'
 
-export function isCR(props) {
-    return props
-}
-
-function DashBoard({match:{params:{id}}}) {
+export default function DashBoard({match:{params:{id}}}) {
     
     const [disableInput, setDisableInput] = useState(true)
     const [userData, setUserData] = useState({
-        id: "", username: "", email: "", cr:false
+        id: "", username: "", email: "", about: "",
+        achievements: "",
+        contact: "",
+        skills: "",
     })
     const currentData = {
         currentUsername: userData.username,
-        currentEmail: userData.email
+        currentEmail: userData.email,
+        currentAbout: userData.about,
+        currentAcheivements: userData.achievements,
+        currentContact: userData.contact,
+        currentSkills: userData.skills
     }
 
     useEffect(() => {
-        fetch(`/dashboard/${id}`)
-        .then(res => res.json())
+        Axios({
+            method: "GET",
+            withCredentials: "true",
+            url: `https://plus-ultra-try.herokuapp.com/dash/${id}`
+        })
+        .then(res => res.data)
         .then(res => {
             // console.log(res);
             setUserData({
@@ -32,25 +39,28 @@ function DashBoard({match:{params:{id}}}) {
                 id: res.id,
                 username: res.username,
                 email: res.email,
-                cr: res.cr
+                about: res.about,
+                achievements: res.achievements,
+                contact: res.contact,
+                skills: res.skills
             })
-            isCR(res.cr)
-            // window.location = `/dashboard/${id}`;
         })
         // eslint-disable-next-line
     }, [id])
-
-    // window.location = `/dashboard/${id}`;
 
     const save = () => {
         Axios({
             method: "POST",
             data: {
                 username: userData.username,
-                email: userData.email
+                email: userData.email,
+                about: userData.about,
+                achievements: userData.achievements,
+                contact: userData.contact,
+                skills: userData.skills
             },
             withCredentials: true,
-            url: `http://localhost:5000/updateProfile/${userData.id}`,
+            url: `https://plus-ultra-try.herokuapp.com/updateProfile/${userData.id}`,
         }).then(res => console.log(res))
           .then(window.location = `/dashboard/${userData.username}`)
     }
@@ -59,20 +69,15 @@ function DashBoard({match:{params:{id}}}) {
         Axios({
             method: "GET",
             withCredentials: true,
-            url: "http://localhost:5000/logout"
+            url: "https://plus-ultra-try.herokuapp.com/logout"
         }).then(res => console.log(res))
-        .then(Auth(false))
         .then(window.location="/login")
-        
     }
 
-    return (
-        
-        <div>
-            <h1>{userData.username}'s DashBoard</h1>
-            {/* {userData.cr === false ? <p>Hi</p> : <p>Bye</p>} */}
-            <br /><br />
-            {/* <button onClick={()=> console.log(userData.username)}>ss</button> */}
+    function dashboard() {
+        return (
+        <>
+         <h1>{userData.username}'s DashBoard</h1>
             <span>
                 <input placeholder="username" 
                        disabled={disableInput} 
@@ -98,31 +103,91 @@ function DashBoard({match:{params:{id}}}) {
                         value={currentData.currentEmail} 
                     /> 
                 <br />
+                <textarea
+                       placeholder="About" 
+                       disabled={disableInput} 
+                       onChange={e => {
+                            setUserData({
+                                ...userData,
+                                about: e.target.value
+                            })
+                        }}
+                        rows="7"
+                        cols="30"
+                        type="text" 
+                        value={currentData.currentAbout} 
+                    /> 
+                <br />
+                <textarea placeholder="Achievements" 
+                       disabled={disableInput} 
+                       onChange={e => {
+                            setUserData({
+                                ...userData,
+                                achievements: e.target.value
+                            })
+                        }} 
+                        rows="7"
+                        cols="30"
+                        type="text" 
+                        value={currentData.currentAcheivements} 
+                    /> 
+                <br />
+                <input placeholder="contact"
+                       disabled={disableInput} 
+                       onChange={e => {
+                            setUserData({
+                                ...userData,
+                                contact: e.target.value
+                            })
+                        }} 
+                        type="text" 
+                        value={currentData.currentContact} 
+                    /> 
+                <br />
+                <textarea placeholder="text" 
+                       disabled={disableInput} 
+                       onChange={e => {
+                            setUserData({
+                                ...userData,
+                                skills: e.target.value
+                            })
+                        }} 
+                        rows="7"
+                        cols="30"
+                        type="text" 
+                        value={currentData.currentSkills} 
+                    /> 
+                <br />
             </span>
 
-            {/* <Link to="editprofile">Edit profile<br /></Link> */}
-            <br /><button onClick={() => {
-                setDisableInput(false)
-                // console.log(currentData);
-            }}>Edit profile</button>
-
             <br />
-            <br />
+            <div id="buttons">
+                <button onClick={() => {
+                    setDisableInput(false)
+                    // console.log(currentData);
+                }}>Edit profile</button>
 
-            <button onClick={() => {
-                setDisableInput(true)
-                save()
-                // console.log(userData);
-            }}>Save changes</button>
-            <br /><br />
+                <button onClick={() => {
+                    setDisableInput(true)
+                    save()
+                    console.log(userData);
+                }}>Save changes</button>
 
+                
+            </div>
             {/* <Link to="logout">Logout</Link> */}
-            <button onClick={logout}>Logout</button>
-
-            <div className="container-home"><Footer /></div>    
+            <button id="logout-button" onClick={logout}>Logout</button>
             
-        </div> 
+
+            <div className="container-home"><Footer /></div>
+        </>
+
+        )
+    }
+
+    return (
+        <div  className="container-dashboard">
+           {userData.username === "" ? <h2>Not authenticated</h2> : dashboard()}
+        </div>
     )
 }
-
-export default withRouter(DashBoard)

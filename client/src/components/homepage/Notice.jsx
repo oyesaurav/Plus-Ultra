@@ -23,7 +23,7 @@ export default function Notice(props) {
         body: newNotice.body
       },
       withCredentials: true,
-      url: "http://localhost:5000/noticeboard",
+      url: "https://plus-ultra-try.herokuapp.com/noticeboard",
     }).then(res => console.log(res))
     .then(window.location = "/")
   }
@@ -43,16 +43,16 @@ export default function Notice(props) {
     Axios({
       method: "GET",
       withCredentials: true,
-      url: `http://localhost:5000/edit-notice/${id}`
+      url: `https://plus-ultra-try.herokuapp.com/edit-notice/${id}`
     }).then(window.location = `/edit-notice/${id}`)
   }
 
   return (
     <div id="container-notice">
 
-    <h1>Notice Board{props.username}</h1>
+    <h1>Notice Board</h1>
 
-    {props.username === "B120044" ? <p>CR</p> : <p>Student</p>}
+    {/* {props.username === "B120044" ? <p>CR</p> : <p>Student</p>} */}
 
     <span>
       <input placeholder="date" type="text" onChange={e => setNewNotice({...newNotice, date: e.target.value})} />
@@ -71,7 +71,7 @@ export default function Notice(props) {
               Axios({
                 method: "POST",
                 withCredentials: true,
-                url: `http://localhost:5000/delete-notice/${n._id}`
+                url: `https://plus-ultra-try.herokuapp.com/delete-notice/${n._id}`
               }).then(window.location = "/")
             }}>
               <i className="fas fa-trash-alt"></i>

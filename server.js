@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGO_DB_URL, {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ encoded: true, extended: true }))
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "https://plus-ultra-try.herokuapp.com/",
     credentials: true
 }))
 app.use(session({
@@ -167,6 +167,13 @@ app.get("/editprofile", (req, res,next) => {
 // app.post("/send", (req, res) => {
 //     res.send(req.body)
 // })
+app.get("/dashboard/:id", (req, res,next) => {
+    console.log("At dashboard now!");
+    // res.sendFile(path.join(__dirname, "client/public/index.html"))
+     next()
+ })
+
+
 function loggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       next();
@@ -175,28 +182,29 @@ function loggedIn(req, res, next) {
     }
   }
 
-app.get("/dashboard/:id",loggedIn,async (req, res,next) => {
+  app.get("/dash/:id",loggedIn, (req, res, next) => {
     const user = req.params.id
     
     User.findOne({username: user}, (err, found) => {
         if(err) throw(err)
         if(!found) {
-            // res.json({ message: "BYE" })
-            res.send("No user found")
-            next()
+            res.status(404).json({ message: "BYE" })
             // console.log("BYE");
         }
         if (found) {
             const foundUser = {...found._doc}
-            // console.log(foundUser);
-            res.json({
+            // console.log(found);
+            res.status(200).json({
                 id: foundUser._id,
                 email: foundUser.email,
                 username: foundUser.username,
-                cr: foundUser.cr,
+                about: foundUser.about,
+                achievements: foundUser.achievements,
+                contact: foundUser.contact,
+                skills: foundUser.skills,
                 message: "HELLO" 
             })
-            next()
+            // next()
             // console.log("HELLO");
         }
     })
@@ -208,7 +216,11 @@ app.post("/updateProfile/:id", (req, res) => {
     const updatedUser = {
         $set: {
             username: req.body.username,
-            email: req.body.email
+            email: req.body.email,
+            about: req.body.about,
+            achievements: req.body.achievements,
+            contact: req.body.contact,
+            skills: req.body.skills,
         }
     }
 
@@ -286,6 +298,9 @@ app.post("/edit-notice/:id", (req, res) => {
 
 if(process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"))
+    app.get("/*", function(req, res) {
+        res.sendFile(path.join(__dirname, "./client/build/index.html"));
+      });
 }
 
 app.listen(process.env.PORT || 5000, () => {

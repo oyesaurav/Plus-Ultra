@@ -12,14 +12,14 @@ export default function Home(props) {
 
     return (
         <div className="container-home">
-            <Nav id={props.match.params.id} />
+            {/* <Nav id={props.match.params.id} /> */}
         <BrowserRouter>
 
 
             <div className="homeBg"></div>
             <hr />
             <h1>WELCOME {props.match.params.id}</h1>
-            <p>{props.location.pathname}</p>
+            {/* <p>{props.location.pathname}</p> */}
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora tempore sit saepe eos incidunt, magni eaque praesentium dolor modi impedit laborum, repellat, officiis dolorem aliquid repellendus odio quasi cumque quaerat porro ex pariatur beatae ipsam?</p>
         
             <p className="buttons">

@@ -11,7 +11,7 @@ import SignupPage from './components/authpage/SignupPage';
 import EditProfile from './components/students/EditProfile'
 import Test from './components/Test'
 import DashBoard from './components/authpage/DashBoard'
-import ProtectedRoute from './components/ProtectedRoute';
+// import ProtectedRoute from './components/ProtectedRoute';
 import UpdateNotice from './components/homepage/UpdateNotice';
 
 ReactDOM.render(
@@ -25,7 +25,7 @@ ReactDOM.render(
     <Route path="/signup" component={SignupPage} />
     <Route path="/editprofile" component={EditProfile} />
     <Route path="/helloServer" component={Test} />
-    <ProtectedRoute path="/dashboard/:id" component={DashBoard} />
+    <Route path="/dashboard/:id" component={DashBoard} />
     <Route path="/edit-notice/:id" component={UpdateNotice} />
     <Route>
       <h2>Hey! you are in a wrong page...</h2>

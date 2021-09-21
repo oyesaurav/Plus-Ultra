@@ -27,7 +27,7 @@ export default function LoginPage () {
             password: loginPassword
           },
           withCredentials: true,
-          url: "http://localhost:5000/login",
+          url: "https://plus-ultra-try.herokuapp.com/login",
         }).then((res) => {
             // console.log(res);
             if(res.data === "No user found") {
@@ -37,7 +37,7 @@ export default function LoginPage () {
                 setLoggedIn(true)
                 // window.location = "/"
                 Auth(true);
-                window.location = `/home/${loginUsername}`;
+                window.location = `/dashboard/${loginUsername}`;
                 // <Redirect to={{
                 //     pathname: '/',
                 //     state: [{id: 1, username: loginUsername}]

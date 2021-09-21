@@ -17,7 +17,7 @@ export default function UpdateNotice({match:{params:{id}}}) {
                 body: notice.body
             },
             withCredentials: true,
-            url: `http://localhost:5000/edit-notice/${id}`,
+            url: `https://plus-ultra-try.herokuapp.com/edit-notice/${id}`,
         }).then(res => console.log(res))
         //   .then(window.location = `/dashboard/${userData.username}`)
     }
