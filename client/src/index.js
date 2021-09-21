@@ -13,11 +13,14 @@ import Test from './components/Test'
 import DashBoard from './components/authpage/DashBoard'
 // import ProtectedRoute from './components/ProtectedRoute';
 
+import UpdateNotice from './components/homepage/UpdateNotice';
+
+
 ReactDOM.render(
   <BrowserRouter>
   <App />
   <Switch>
-    <Route path="/home" component={Home} />
+    <Route path="/home/:id" component={Home} />
     <Route exact path="/" component={Home} />
     <Route exact path="/students" component={Students} />
     <Route path="/login" component={LoginPage} />
@@ -25,6 +28,8 @@ ReactDOM.render(
     <Route path="/editprofile" component={EditProfile} />
     <Route path="/helloServer" component={Test} />
     <Route path="/dashboard/:id" component={DashBoard} />
+    <Route path="/edit-notice/:id" component={UpdateNotice} />
+
     <Route>
       <h2>Hey! you are in a wrong page...</h2>
     </Route>

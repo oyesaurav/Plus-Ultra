@@ -10,11 +10,15 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require('express');
 const User = require("./user");
+const Notice = require('./notice')
 // const { RSA_NO_PADDING } = require('constants')
 
 const app = express()
-const LOCAL_PORT = "http://localhost:3000"
-const BUILD_PORT = "https://plus-ultra-try.herokuapp.com/"
+
+const REACT_PORT = "http://localhost:3000"
+const NODE_PORT = "http://localhost:5000"
+const BUILD_PORT = "https://plus-ultra-d6.herokuapp.com"
+
 
 mongoose.connect(process.env.MONGO_DB_URL, {
     useNewUrlParser: true,
@@ -50,17 +54,22 @@ app.get("/", (req, res,next) => {
     console.log("At homepage now!");
     next()
 })
+app.get("/home/:id", (req, res) => {
+    const id = req.params.id
+    res.send(id)
+    // console.log(id);
+})
 /******************** ROOT-ROUTE ********************/
 
 
 
 /******************** TEST-ROUTE ********************/
 app.get("/helloServer", (req, res,next) => {
-    res.json({
+    res.status(200).json({
         message: "Hello from server!"
     })
-    // res.redirect("/")
     next()
+    res.send("Hello from server!")
 })
 /******************** TEST-ROUTE ********************/
 
@@ -69,7 +78,7 @@ app.get("/helloServer", (req, res,next) => {
 
 /******************** HOME-ROUTE ********************/
 app.get("/home", (req, res,next) => {
-     console.log("<h1>Home</h1>");
+    console.log("<h1>Home</h1>");
     next()
     // res.render("<h1>Home</h1>")
 })
@@ -165,6 +174,7 @@ app.get("/dashboard/:id", (req, res,next) => {
      next()
  })
 
+
 function loggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       next();
@@ -173,28 +183,33 @@ function loggedIn(req, res, next) {
     }
   }
 
-app.get("/dash/:id",loggedIn,async (req, res,next) => {
+  app.get("/dash/:id",loggedIn, (req, res, next) => {
+
     const user = req.params.id
     
     User.findOne({username: user}, (err, found) => {
         if(err) throw(err)
         if(!found) {
-            // res.json({ message: "BYE" })
-            res.send("No user found")
-            next()
+            res.status(404).json({ message: "BYE" })
             // console.log("BYE");
         }
         if (found) {
             const foundUser = {...found._doc}
-            // console.log(foundUser._id);
-            res.json({
+            // console.log(found);
+            res.status(200).json({
                 id: foundUser._id,
                 email: foundUser.email,
                 username: foundUser.username,
+                about: foundUser.about,
+                achievements: foundUser.achievements,
+                contact: foundUser.contact,
+                skills: foundUser.skills,
                 message: "HELLO" 
             })
-            // res.end()
+
             // next()
+            // console.log("HELLO");
+
         }
     })
     
@@ -205,7 +220,11 @@ app.post("/updateProfile/:id", (req, res) => {
     const updatedUser = {
         $set: {
             username: req.body.username,
-            email: req.body.email
+            email: req.body.email,
+            about: req.body.about,
+            achievements: req.body.achievements,
+            contact: req.body.contact,
+            skills: req.body.skills,
         }
     }
 
@@ -224,12 +243,53 @@ app.post("/updateProfile/:id", (req, res) => {
 
 
 
-/******************** TEST-ROUTE ********************/
-// app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-//     // res.render("<h1>Go back!</h1>")
-// });
-/******************** TEST-ROUTE ********************/
+/******************** NOTICE-ROUTE ********************/
+app.post("/noticeboard", (req, res) => {
+    const newNotice = new Notice({
+        date: req.body.date,
+        body: req.body.body
+    })
+    newNotice.save()
+    // console.log(newNotice);
+})
+app.get("/notice", (req, res) => {
+
+    Notice.find({}, (err, found) => {
+        if(err) throw(err)
+        if(!found) res.send("No new notices!")
+        if(found) {
+            res.json({message: found})
+            // res.send("Updated notices!")
+        }
+    })
+    // next()
+});
+app.post("/delete-notice/:id", (req, res) => {
+    const id = req.params.id
+    Notice.deleteOne({_id: id}, (err, deleted) => {
+        if(err) throw(err)
+        if(deleted) res.send("Notice deleted!")
+        else res.send("Something went wrong!")
+    })
+    // console.log(id);
+})
+app.post("/edit-notice/:id", (req, res) => {
+    const id = req.params.id
+    // console.log(id);
+    const updatedNotice = {
+        $set: {
+            date: req.body.date,
+            body: req.body.body
+        }
+    }
+    // console.log(updatedNotice);
+    Notice.updateOne({_id: id}, updatedNotice, (err, found) => {
+        if(err) throw(err)
+        if(!found) res.send("Something went wrong")
+        if(found) res.send("Updated profile")
+    })
+})
+/******************** NOTICE-ROUTE ********************/
 
 
 
@@ -241,7 +301,9 @@ app.post("/updateProfile/:id", (req, res) => {
 
 
 if(process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
+
+    app.use(express.static("client/build"))
+
     app.get("/*", function(req, res) {
         res.sendFile(path.join(__dirname, "./client/build/index.html"));
       });

@@ -29,9 +29,10 @@
     }
 
     .container-contact-us {
-        background-color: #F3F1F5;
+        background-color: $white;
         display: flex;
         justify-content: space-around;
+        padding: 25px 0;
 
         .div-animated-json {
             align-items: center;
@@ -64,6 +65,7 @@
                 margin: 20px auto 0;
                 padding: 0 0 0 45px;
                 position: relative;
+                transition: all 0.25s ease-in-out;
                 width: 150px;
 
                 #submit-animated-icon {
@@ -88,7 +90,7 @@
                 border: 1px solid #c8c6c6;
                 display: block;
                 margin: 5px auto;
-                width: 100%;
+                width: 95%;
 
                 &:focus {
                     outline: 0.5px solid #9D9D9D;
@@ -132,9 +134,78 @@
 
                     li {
                         background-color: #F3F1F5;
-                        padding: 5px 0;
+                        padding: 10px;
+                        position: relative;
                         margin: 0 0 10px 0;
+
+                        span {
+                            margin-bottom: 5px;
+                        }
+
+                        button {
+                            background: none;
+                            border: none;
+                            position: absolute;
+                            right: 5px;
+                            top: 10px;
+                            transition: all 0.25s ease-in-out;
+
+                            &:hover {
+                                color: red;
+                                cursor: pointer;
+                            }
+                            a {
+                                color: $black;
+                                transition: all 0.25s ease-in-out;
+
+                                &:hover {
+                                    color: #8236CB;
+                                }
+                            }
+                        }
+                        
                     }
+                }
+            }
+
+            span {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                button {
+                    align-items: center;
+                    background: transparent;
+                    border: 1px solid #8236CB;
+                    border-radius: 50px;
+                    color: #8236CB;
+                    display: flex;
+                    height: 35px;
+                    justify-content: center;
+                    margin: auto;
+                    position: relative;
+                    transition: all 0.25s ease-in-out;
+                    width: 150px;
+    
+                    &:hover, &:focus {
+                        background: #8236CB;
+                        color: $white;
+                        cursor: pointer;
+                    }
+                }
+
+                input, textarea {
+                    background: transparent;
+                    border: 1px solid #c8c6c6;
+                    margin-bottom: 10px;
+                    transition: all 0.05s ease-in-out;
+
+                    &:focus {
+                        outline: 1px solid #c8c6c6;
+                    }
+                }
+                input {
+                    height: 30px;
                 }
             }
         }
