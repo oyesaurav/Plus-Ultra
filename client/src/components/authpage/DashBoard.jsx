@@ -35,7 +35,7 @@ function DashBoard({match:{params:{id}}}) {
                 email: res.email
             })
         })
-        .then(board())
+        // .then(board())
         // .then(window.location=`/dashboard/${userData.username}`)
         // window.location = `/dashboard/${userData.id}`
         // eslint-disable-next-line

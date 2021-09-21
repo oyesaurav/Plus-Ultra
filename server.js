@@ -160,6 +160,11 @@ app.get("/editprofile", (req, res,next) => {
 // app.post("/send", (req, res) => {
 //     res.send(req.body)
 // })
+app.get("/dashboard/:id", (req, res,next) => {
+    console.log("At dashboard now!");
+     next()
+ })
+
 function loggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       next();
