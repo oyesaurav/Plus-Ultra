@@ -52,14 +52,14 @@ app.get("/", (req, res,next) => {
 })
 /******************** ROOT-ROUTE ********************/
 
-// app.get('/*', function(req, res,next) {
-//     res.sendFile(path.join(__dirname, "client/public/index.html"), function(err) {
-//        if (err) {
-//         return res.status(500).send(err)
-//        }
-//      })
-//      next()
-//   })
+app.get('/*', function(req, res,next) {
+    res.sendFile(path.join(__dirname, "client/public/index.html"), function(err) {
+       if (err) {
+        return res.status(500).send(err)
+       }
+     })
+     next()
+  })
 
 
 /******************** TEST-ROUTE ********************/
