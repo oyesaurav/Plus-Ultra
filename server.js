@@ -14,7 +14,7 @@ const User = require("./user");
 
 const app = express()
 const LOCAL_PORT = "http://localhost:3000"
-const BUILD_PORT = "https://plus-ultra-d6.herokuapp.com"
+const BUILD_PORT = "https://plus-ultra-try.herokuapp.com/"
 
 mongoose.connect(process.env.MONGO_DB_URL, {
     useNewUrlParser: true,
@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_DB_URL, {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ encoded: true, extended: true }))
 app.use(cors({
-    origin: "https://plus-ultra-d8.netlify.app/",
+    origin: "https://plus-ultra-try.herokuapp.com/",
     credentials: true
 }))
 app.use(session({
@@ -51,7 +51,6 @@ app.get("/", (req, res,next) => {
     next()
 })
 /******************** ROOT-ROUTE ********************/
-
 
 
 
@@ -160,6 +159,12 @@ app.get("/editprofile", (req, res,next) => {
 // app.post("/send", (req, res) => {
 //     res.send(req.body)
 // })
+app.get("/dashboard/:id", (req, res,next) => {
+    console.log("At dashboard now!");
+    // res.sendFile(path.join(__dirname, "client/public/index.html"))
+     next()
+ })
+
 function loggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       next();
@@ -168,7 +173,7 @@ function loggedIn(req, res, next) {
     }
   }
 
-app.get("/dashboard/:id",loggedIn,async (req, res,next) => {
+app.get("/dash/:id",loggedIn,async (req, res,next) => {
     const user = req.params.id
     
     User.findOne({username: user}, (err, found) => {
@@ -188,8 +193,8 @@ app.get("/dashboard/:id",loggedIn,async (req, res,next) => {
                 username: foundUser.username,
                 message: "HELLO" 
             })
-            next()
-            // console.log("HELLO");
+            // res.end()
+            // next()
         }
     })
     
@@ -236,8 +241,16 @@ app.post("/updateProfile/:id", (req, res) => {
 
 
 if(process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"))
+    app.use(express.static("client/build"));
+    app.get("/*", function(req, res) {
+        res.sendFile(path.join(__dirname, "./client/build/index.html"));
+      });
 }
+
+// app.get("*", function (req, res) {
+//     res.sendFile(path.join(__dirname, "./client/public/index.html"));
+//   });
+
 
 app.listen(process.env.PORT || 5000, () => {
     console.log("Server running on port 5000");

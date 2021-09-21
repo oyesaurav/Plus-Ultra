@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from 'react'
-import {Route, Redirect} from 'react-router-dom'
+import React from 'react'
+import {Route} from 'react-router-dom'
 import {Auth} from './authpage/LoginPage'
 import Home from './homepage/home'
 

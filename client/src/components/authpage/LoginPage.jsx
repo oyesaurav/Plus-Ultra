@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom"
 import Footer from '../Footer'
 // import DashBoard from './DashBoard'
 import Axios from 'axios'
-import ProtectedRoute from '../ProtectedRoute'
+// import ProtectedRoute from '../ProtectedRoute'
 
  export function Auth(props) {
         return props
