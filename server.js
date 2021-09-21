@@ -168,10 +168,10 @@ function loggedIn(req, res, next) {
     }
   }
 
-app.get("/dashboard/:id",loggedIn,async (req, res,next) => {
+app.get("/dash/:id",loggedIn,async (req, res,next) => {
     const user = req.params.id
     
-    await User.findOne({username: user}, (err, found) => {
+    User.findOne({username: user}, (err, found) => {
         if(err) throw(err)
         if(!found) {
             // res.json({ message: "BYE" })
@@ -182,7 +182,7 @@ app.get("/dashboard/:id",loggedIn,async (req, res,next) => {
         if (found) {
             const foundUser = {...found._doc}
             // console.log(foundUser._id);
-            return res.json({
+            res.json({
                 id: foundUser._id,
                 email: foundUser.email,
                 username: foundUser.username,
